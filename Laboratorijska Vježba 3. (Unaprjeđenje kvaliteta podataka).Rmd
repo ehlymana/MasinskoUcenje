@@ -1,0 +1,138 @@
+---
+title: "Laboratorijska Vježba 3. (Unaprjeđenje kvaliteta podataka)"
+output:
+  html_document:
+    df_print: paged
+---
+
+## Zadatak 1
+
+```{r}
+
+podaci <- read.csv("admission.csv", fileEncoding = 'UTF-8')
+
+cat("Broj NA vrijednosti u koloni toefl_score: ", length(subset(podaci, is.na(toefl_score))$uni_rating), "\n")
+
+cat("Broj instanci koje imaju NA vrijednosti u bilo kojem redu: ", length(subset(podaci, (is.na(gre_score) | is.na(toefl_score) | is.na(uni_rating) | is.na(sop) | is.na(lor) | is.na(sgpa) | is.na(admission_chance)))$uni_rating))
+```
+
+```{r}
+
+library(VIM)
+
+aggr(podaci)
+```
+
+```{r}
+
+podaci_stari <- podaci
+
+not_na <- subset(podaci, is.na(toefl_score) == FALSE)$toefl_score
+median <- median(not_na)
+for (i in 1 : length(podaci$toefl_score))
+{
+  if (is.na(podaci$toefl_score[i]) == TRUE)
+  {
+    podaci$toefl_score[i] <- median
+  }
+}
+
+boxplot(podaci_stari$toefl_score, podaci$toefl_score)
+
+```
+
+```{r}
+
+podaci_kategorija <- podaci_stari
+podaci_kategorija$uni_rating <- factor(podaci_kategorija$uni_rating)
+
+not_na <- subset(podaci_kategorija, is.na(toefl_score) == FALSE)
+srednje_vrijednosti <- c()
+svi_ratinzi <- levels(podaci_kategorija$uni_rating)
+
+for (i in 1 : length(svi_ratinzi))
+{
+  srednja_vrijednost <- median(subset(not_na, uni_rating == svi_ratinzi[i])$toefl_score)
+  srednje_vrijednosti <- append(srednje_vrijednosti, srednja_vrijednost)
+}
+
+for (i in 1 : length(podaci_kategorija$toefl_score))
+{
+  if (is.na(podaci_kategorija$toefl_score[i]) == TRUE)
+  {
+    index <- podaci_kategorija$uni_rating[i]
+    podaci_kategorija$toefl_score[i] <- srednje_vrijednosti[index]
+  }
+}
+
+boxplot(podaci_stari$toefl_score, podaci$toefl_score, podaci_kategorija$toefl_score)
+```
+
+------------------------------------------------------------------------
+
+## Zadatak 2
+
+```{r}
+
+#podaci <- read.csv("admission.csv", fileEncoding = 'UTF-8')
+
+plot(podaci$sgpa, podaci$gre_score)
+
+```
+
+```{r}
+
+median <- median(podaci$sgpa)
+
+for (i in 1 : 3)
+{
+  index_minimuma <- which.min(podaci$sgpa)
+  podaci$sgpa[index_minimuma] <- median
+}
+
+index_maximuma <- which.max(podaci$sgpa)
+podaci$sgpa[index_maximuma] <- median
+
+plot(podaci$sgpa, podaci$gre_score)
+
+```
+
+------------------------------------------------------------------------
+
+## Zadatak 3
+
+```{r}
+
+library(dplyr)
+
+max <- max(podaci$toefl_score)
+min <- min(podaci$toefl_score)
+
+podaci <- mutate(podaci, toefl_minmax = (toefl_score - min) / (max - min))
+```
+
+```{r}
+
+avg <- median(podaci$toefl_score)
+std <- sd(podaci$toefl_score)
+
+podaci <- mutate(podaci, toefl_zscore = (toefl_score - avg) / std)
+```
+
+```{r}
+
+max <- max(podaci$toefl_score)
+j <- 0
+while (10 ** j < max)
+  j = j + 1
+
+podaci <- mutate(podaci, toefl_decscale = toefl_score / 10 ** j)
+```
+
+```{r}
+
+plot(podaci$uni_rating, podaci$toefl_score, main = "Scatterplot bez normalizacije", bg = "blue", pch = 21)
+plot(podaci$uni_rating, podaci$toefl_minmax, main = "Min-max normalizacija", bg = "yellow", pch = 21)
+plot(podaci$uni_rating, podaci$toefl_zscore, main = "Z-score normalizacija", bg = "green", pch = 21)
+plot(podaci$uni_rating, podaci$toefl_decscale, main = "Decimal scale normalizacija", bg = "red", pch = 21)
+```
