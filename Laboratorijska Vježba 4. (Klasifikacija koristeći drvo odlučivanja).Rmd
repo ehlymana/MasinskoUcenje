@@ -1,0 +1,147 @@
+---
+title: "Laboratorijska vježba 4 (Klasifikacija koristeći drvo odlučivanja)"
+output:
+  html_document:
+    df_print: paged
+---
+
+## Zadatak 1
+
+```{r}
+
+podaci <- read.csv("vrijeme.csv")
+podaci$vrijeme <- factor(podaci$vrijeme)
+podaci$vlaznost <- factor(podaci$vlaznost)
+podaci$vjetar <- factor(podaci$vjetar)
+podaci$utakmica <- factor(podaci$utakmica)
+
+end <- length(podaci$vrijeme)
+n <- as.integer(0.8 * end)
+podaci_train <- podaci[1 : n, ]
+podaci_test <- podaci[(n + 1) : end, ]
+```
+
+```{r}
+
+library(rpart)
+
+tree <- rpart(formula = utakmica ~ .,
+              method = "class",
+              data = podaci_train,
+              control = rpart.control("minsplit" = 1))
+```
+
+```{r}
+
+library(rpart.plot)
+
+tree
+rpart.plot(tree)
+```
+
+```{r}
+
+prediction <- predict(tree, podaci_test)
+for (i in 1 : nrow(prediction))
+{
+  predviđena <- "ne"
+  if (prediction[i][1] == 1)
+    predviđena <- "da"
+  stvarna <- podaci_test$utakmica[i]
+  stvarna <- levels(podaci_test$utakmica)[stvarna]
+  cat("Predviđena vrijednost:", predviđena, "Stvarna vrijednost:", stvarna, "\n")
+}
+```
+
+```{r}
+
+tree_gain <- rpart(formula = utakmica ~ .,
+              method = "class",
+              data = podaci_train,
+              control = rpart.control("minsplit" = 1),
+              parms = list(split = "information"))
+
+rpart.plot(tree)
+```
+
+## Zadatak 2
+
+```{r}
+
+plotcp(tree_gain)
+```
+
+```{r}
+
+pruned_tree <- prune(tree_gain, cp = 0.22)
+
+rpart.plot(pruned_tree)
+```
+
+```{r}
+
+prediction <- predict(pruned_tree, podaci_test)
+for (i in 1 : nrow(prediction))
+{
+  predviđena <- "ne"
+  if (prediction[i][1] == 1)
+    predviđena <- "da"
+  stvarna <- podaci_test$utakmica[i]
+  stvarna <- levels(podaci_test$utakmica)[stvarna]
+  cat("Predviđena vrijednost:", predviđena, "Stvarna vrijednost:", stvarna, "\n")
+}
+```
+
+## Zadatak 3
+
+```{r}
+
+library(OneR)
+
+model <- OneR(podaci_train)
+summary(model)
+```
+
+```{r}
+
+plot(model)
+```
+
+```{r}
+
+prediction <- predict(model, podaci_test)
+for (i in 1 : length(prediction))
+{
+  predviđena <- levels(prediction)[prediction[i]]
+  stvarna <- podaci_test$utakmica[i]
+  stvarna <- levels(podaci_test$utakmica)[stvarna]
+  cat("Predviđena vrijednost:", predviđena, "Stvarna vrijednost:", stvarna, "\n")
+}
+```
+
+## Zadatak 4
+
+```{r}
+
+library(rJava)
+library(RWeka)
+
+model <- JRip(formula = utakmica ~ ., data = podaci_train)
+summary(model)
+model
+```
+
+```{r}
+
+prediction <- predict(model, podaci_test)
+probability <- predict(model, podaci_test, type = 'prob')
+for (i in 1 : length(prediction))
+{
+  predviđena <- levels(prediction)[prediction[i]]
+  vjerovatnoca <- probability[i, predviđena]
+  stvarna <- podaci_test$utakmica[i]
+  stvarna <- levels(podaci_test$utakmica)[stvarna]
+  cat("Predviđena vrijednost s vjerovatnoćom od", vjerovatnoca, ":", predviđena, "Stvarna vrijednost:", stvarna, "\n")
+}
+
+```
