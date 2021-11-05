@@ -1,0 +1,295 @@
+---
+title: "Laboratorijska Vježba 5. (Evaluacija performansi modela klasifikacije)"
+output:
+  html_document:
+    df_print: paged
+---
+
+## Zadatak 1
+
+```{r}
+
+podaci <- read.csv("titanic.csv")
+podaci <- subset(podaci, select = -c(PassengerId, Name, Ticket, Cabin, Embarked))
+podaci <- na.omit(podaci)
+
+podaci$Survived <- factor(podaci$Survived)
+podaci$Pclass <- factor(podaci$Pclass)
+podaci$Sex <- factor(podaci$Sex)
+podaci$SibSp <- factor(podaci$SibSp)
+podaci$Parch <- factor(podaci$Parch)
+
+end <- length(podaci$Age)
+n <- as.integer(0.8 * end)
+podaci_train <- podaci[1 : n, ]
+podaci_test <- podaci[(n + 1) : end, ]
+```
+
+```{r}
+
+library(C50)
+library(caret)
+
+tree <- C5.0(x = subset(podaci_train, select = -c(Survived)), y = podaci_train$Survived)
+
+predictions <- predict(tree, newdata = subset(podaci_test, select = -c(Survived)))
+cm_initial <- confusionMatrix(data = predictions, reference = podaci_test$Survived, positive = '1')
+cm_initial
+```
+
+```{r}
+
+set.seed(2222)
+rows <- sample(nrow(podaci))
+podaci <- podaci[rows, ]
+
+end <- length(podaci$Age)
+n <- as.integer(0.8 * end)
+podaci_train <- podaci[1 : n, ]
+podaci_test <- podaci[(n + 1) : end, ]
+
+tree <- C5.0(x = subset(podaci_train, select = -c(Survived)), y = podaci_train$Survived)
+
+predictions <- predict(tree, newdata = subset(podaci_test, select = -c(Survived)))
+cm_holdout <- confusionMatrix(data = predictions, reference = podaci_test$Survived, positive = '1')
+cm_holdout
+```
+
+## Zadatak 2
+
+```{r}
+
+library(plyr)
+
+kfold <- function(podaci, k)
+{
+  folds <- split(podaci, cut(sample(1 : nrow(podaci)), k))
+  acc <- rep(NA, length(folds))
+  kappa <- rep(NA, length(folds))
+  
+  for (i in 1:length(folds)) 
+  {
+    test <- subset(ldply(folds[i], data.frame), select = -c(.id))
+    train <- subset(ldply(folds[-i], data.frame), select = -c(.id))
+    tree <- C5.0(x = subset(train, select = -c(Survived)), y = train$Survived)
+    predictions <- predict(tree, newdata = subset(test, select = -c(Survived)))
+    cm <- confusionMatrix(data = predictions, reference = test$Survived, positive = '1')
+    acc[i] <- cm$overall[1]
+    kappa[i] <- cm$overall[2]
+  }
+  list <- list("acc" = acc, "kappa" = kappa)
+  return (list)
+}
+```
+
+```{r}
+
+list <- kfold(podaci, 10)
+acc <- list$acc
+kappa <- list$kappa
+
+cat("10-fold validacija\n")
+cat("Najveća tačnost:", max(acc), ", fold:", which.max(acc))
+cat(", najveća kappa:", max(kappa), ", fold:", which.max(kappa), "\n")
+cat("Najmanja tačnost:", min(acc), ", fold:", which.min(acc))
+cat(", najmanja kappa:", min(kappa), ", fold:", which.min(kappa), "\n")
+cat("Srednja tačnost:", sum(acc) / length(acc))
+cat(", srednja kappa:", sum(kappa) / length(kappa), "\n\n")
+
+list <- kfold(podaci, 5)
+acc <- list$acc
+kappa <- list$kappa
+
+cat("5-fold validacija\n")
+cat("Najveća tačnost:", max(acc), ", fold:", which.max(acc))
+cat(", najveća kappa:", max(kappa), ", fold:", which.max(kappa), "\n")
+cat("Najmanja tačnost:", min(acc), ", fold:", which.min(acc))
+cat(", najmanja kappa:", min(kappa), ", fold:", which.min(kappa), "\n")
+cat("Srednja tačnost:", sum(acc) / length(acc))
+cat(", srednja kappa:", sum(kappa) / length(kappa), "\n\n")
+```
+
+```{r}
+
+bootstrap <- function(podaci, k)
+{
+  acc <- rep(NA, k)
+  kappa <- rep(NA, k)
+  B <- as.integer(length(podaci$Survived) / k)
+  for (i in 1:k) 
+  {
+    test <- podaci[sample(nrow(podaci), size = B), ]
+    train <- podaci[sample(nrow(podaci), size = length(podaci$Survived) - B), ]
+    tree <- C5.0(x = subset(train, select = -c(Survived)), y = train$Survived)
+    predictions <- predict(tree, newdata = subset(test, select = -c(Survived)))
+    cm <- confusionMatrix(data = predictions, reference = test$Survived, positive = '1')
+    acc[i] <- cm$overall[1]
+    kappa[i] <- cm$overall[2]
+  }
+  list <- list("acc" = acc, "kappa" = kappa)
+  return (list)
+}
+```
+
+```{r}
+
+list <- bootstrap(podaci, 10)
+acc <- list$acc
+kappa <- list$kappa
+
+cat("10-fold bootstrap\n")
+cat("Najveća tačnost:", max(acc), ", fold:", which.max(acc))
+cat(", najveća kappa:", max(kappa), ", fold:", which.max(kappa), "\n")
+cat("Najmanja tačnost:", min(acc), ", fold:", which.min(acc))
+cat(", najmanja kappa:", min(kappa), ", fold:", which.min(kappa), "\n")
+cat("Srednja tačnost:", sum(acc) / length(acc))
+cat(", srednja kappa:", sum(kappa) / length(kappa), "\n\n")
+
+list <- bootstrap(podaci, 5)
+acc <- list$acc
+kappa <- list$kappa
+
+cat("5-fold bootstrap\n")
+cat("Najveća tačnost:", max(acc), ", fold:", which.max(acc))
+cat(", najveća kappa:", max(kappa), ", fold:", which.max(kappa), "\n")
+cat("Najmanja tačnost:", min(acc), ", fold:", which.min(acc))
+cat(", najmanja kappa:", min(kappa), ", fold:", which.min(kappa), "\n")
+cat("Srednja tačnost:", sum(acc) / length(acc))
+cat(", srednja kappa:", sum(kappa) / length(kappa), "\n\n")
+```
+
+## Zadatak 3
+
+```{r}
+
+library(rpart)
+library(ipred)
+
+set.seed(19)
+bag <- bagging(formula = Survived ~ ., data = podaci_train, nbagg = 50, coob = TRUE, control = rpart.control(minsplit = 4, cp = 0))
+
+VI <- data.frame(var = names(podaci_train[, -1]), imp = varImp(bag))
+VI_plot <- VI[order(VI$Overall, decreasing = TRUE), ]
+par(mar=c(4,10,4,4))
+barplot(VI_plot$Overall, names.arg = rownames(VI_plot), horiz = TRUE, xlab = "Variable importance", las = 2)
+```
+
+```{r}
+
+prediction <- predict(bag, newdata = subset(podaci_test, select = -c(Survived)))
+cm_bagging <- confusionMatrix(prediction, podaci_test$Survived)
+cm_bagging
+```
+
+## Zadatak 4
+
+```{r}
+
+library(adabag)
+
+set.seed(20)
+model <- boosting(Survived ~ ., data = podaci_train, boos = TRUE, mfinal = 20)
+importanceplot(model)
+```
+
+```{r}
+
+prediction <- predict(model, newdata = subset(podaci_test, select = -c(Survived)))
+prediction_factor <- factor(prediction$class)
+
+cm_adaboost <- confusionMatrix(prediction_factor, podaci_test$Survived)
+cm_adaboost
+```
+
+## Zadatak 5
+
+```{r}
+
+library(randomForest)
+
+set.seed(20)
+forest <- randomForest(formula = Survived ~ ., data = podaci_train, ntree = 50)
+plot(forest)
+```
+
+```{r}
+
+library(randomForestExplainer)
+
+depth <- min_depth_distribution(forest)
+plot_min_depth_distribution(depth)
+```
+
+```{r}
+
+prediction <- predict(forest, newdata = subset(podaci_test, select = -c(Survived)))
+cm_forest <- confusionMatrix(prediction, podaci_test$Survived)
+cm_forest
+```
+
+## Zadatak 6
+
+```{r}
+
+library(ROSE)
+
+oversample <- ovun.sample(Survived ~ ., data = podaci, method = "both", N = 1000)$data
+
+set.seed(2222)
+rows <- sample(nrow(oversample))
+oversample <- oversample[rows, ]
+
+end <- length(oversample$Age)
+n <- as.integer(0.8 * end)
+podaci_train <- oversample[1 : n, ]
+podaci_test <- oversample[(n + 1) : end, ]
+
+tree <- C5.0(x = subset(podaci_train, select = -c(Survived)), y = podaci_train$Survived)
+
+predictions <- predict(tree, newdata = subset(podaci_test, select = -c(Survived)))
+cm_holdout <- confusionMatrix(data = predictions, reference = podaci_test$Survived, positive = '1')
+cm_holdout
+```
+
+```{r}
+
+set.seed(20)
+forest <- randomForest(formula = Survived ~ ., data = podaci_train, ntree = 165)
+prediction <- predict(forest, newdata = subset(podaci_test, select = -c(Survived)))
+cm_forest <- confusionMatrix(prediction, podaci_test$Survived)
+cm_forest
+```
+
+```{r}
+
+library(smotefamily)
+
+podaci$Pclass <- as.numeric(podaci$Pclass)
+podaci$Age <- as.numeric(podaci$Age)
+podaci$SibSp <- as.numeric(podaci$SibSp)
+podaci$Parch <- as.numeric(podaci$Parch)
+podaci$Sex <- as.numeric(podaci$Sex)
+
+new_data <- SMOTE(subset(podaci, select = -c(Survived)), podaci$Survived)$data
+
+new_data$Survived <- factor(new_data$class)
+new_data$Pclass <- factor(new_data$Pclass)
+new_data$Sex <- factor(new_data$Sex)
+new_data$SibSp <- factor(new_data$SibSp)
+new_data$Parch <- factor(new_data$Parch)
+
+set.seed(2222)
+rows <- sample(nrow(new_data))
+new_data <- new_data[rows, ]
+
+end <- length(new_data$Age)
+n <- as.integer(0.8 * end)
+podaci_train <- new_data[1 : n, ]
+podaci_test <- new_data[(n + 1) : end, ]
+
+tree <- C5.0(x = subset(podaci_train, select = -c(Survived)), y = podaci_train$Survived)
+
+predictions <- predict(tree, newdata = subset(podaci_test, select = -c(Survived)))
+cm_holdout <- confusionMatrix(data = predictions, reference = podaci_test$Survived, positive = '1')
+cm_holdout
+```
