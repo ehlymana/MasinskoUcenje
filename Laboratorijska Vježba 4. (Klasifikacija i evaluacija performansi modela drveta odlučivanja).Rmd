@@ -190,6 +190,30 @@ plot(model)
 
 ```{r}
 
+metrike_oner <- function(model, podaci)
+{
+  feature <- model$feature
+  target <- model$target
+  rules <- model$rules
+  coverage <- 0
+  
+  for (i in 1 : length(rules))
+  {
+    pravilo <- names(rules[i])
+    rezultat <- unlist(rules[i])
+    subset <- podaci[podaci[[feature]] == pravilo, ]
+    coverage <- nrow(subset) / nrow(podaci)
+    correct <- subset[subset[[target]] == rezultat, ]
+    accuracy <- nrow(correct) / nrow(subset)
+    cat("Pravilo: IF", pravilo, "THEN", rezultat, ", pokrivenost:", coverage, ", tačnost:", accuracy, "\n") 
+  }
+}
+
+metrike_oner(model, podaci_train)
+```
+
+```{r}
+
 prediction <- predict(model, podaci_test)
 cm <- confusionMatrix(data = prediction, reference = podaci_test$utakmica)
 
