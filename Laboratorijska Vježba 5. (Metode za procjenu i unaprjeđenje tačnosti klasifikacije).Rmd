@@ -259,37 +259,3 @@ prediction <- predict(forest, newdata = subset(podaci_test, select = -c(Survived
 cm_forest <- confusionMatrix(prediction, podaci_test$Survived)
 cm_forest
 ```
-
-```{r}
-
-library(smotefamily)
-
-podaci$Pclass <- as.numeric(podaci$Pclass)
-podaci$Age <- as.numeric(podaci$Age)
-podaci$SibSp <- as.numeric(podaci$SibSp)
-podaci$Parch <- as.numeric(podaci$Parch)
-podaci$Sex <- as.numeric(podaci$Sex)
-
-new_data <- SMOTE(subset(podaci, select = -c(Survived)), podaci$Survived)$data
-
-new_data$Survived <- factor(new_data$class)
-new_data$Pclass <- factor(new_data$Pclass)
-new_data$Sex <- factor(new_data$Sex)
-new_data$SibSp <- factor(new_data$SibSp)
-new_data$Parch <- factor(new_data$Parch)
-
-set.seed(2222)
-rows <- sample(nrow(new_data))
-new_data <- new_data[rows, ]
-
-end <- length(new_data$Age)
-n <- as.integer(0.8 * end)
-podaci_train <- new_data[1 : n, ]
-podaci_test <- new_data[(n + 1) : end, ]
-
-tree <- C5.0(x = subset(podaci_train, select = -c(Survived)), y = podaci_train$Survived)
-
-predictions <- predict(tree, newdata = subset(podaci_test, select = -c(Survived)))
-cm_holdout <- confusionMatrix(data = predictions, reference = podaci_test$Survived, positive = '1')
-cm_holdout
-```
