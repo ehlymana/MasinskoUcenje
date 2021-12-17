@@ -1,0 +1,1001 @@
+"months_loan_duration","purpose","credit_history","amount","other_debtors","property","age","existing_credits","job","allow"
+6,"radio/tv","critical",1169,"none","real estate",67,2,"skilled employee",1
+48,"radio/tv","repaid",5951,"none","real estate",22,1,"skilled employee",2
+12,"education","critical",2096,"none","real estate",49,1,"unskilled resident",1
+42,"furniture","repaid",7882,"guarantor","building society savings",45,1,"skilled employee",1
+24,"car (new)","delayed",4870,"none","unknown/none",53,2,"skilled employee",2
+36,"education","repaid",9055,"none","unknown/none",35,1,"unskilled resident",1
+24,"furniture","repaid",2835,"none","building society savings",53,1,"skilled employee",1
+36,"car (used)","repaid",6948,"none","other",35,1,"mangement self-employed",1
+12,"radio/tv","repaid",3059,"none","real estate",61,1,"unskilled resident",1
+30,"car (new)","critical",5234,"none","other",28,2,"mangement self-employed",2
+12,"car (new)","repaid",1295,"none","other",25,1,"skilled employee",2
+48,"business","repaid",4308,"none","building society savings",24,1,"skilled employee",2
+12,"radio/tv","repaid",1567,"none","other",22,1,"skilled employee",1
+24,"car (new)","critical",1199,"none","other",60,2,"unskilled resident",2
+15,"car (new)","repaid",1403,"none","other",28,1,"skilled employee",1
+24,"radio/tv","repaid",1282,"none","other",32,1,"unskilled resident",2
+24,"radio/tv","critical",2424,"none","building society savings",53,2,"skilled employee",1
+30,"business","fully repaid",8072,"none","other",25,3,"skilled employee",1
+24,"car (used)","repaid",12579,"none","unknown/none",44,1,"mangement self-employed",2
+24,"radio/tv","repaid",3430,"none","other",31,1,"skilled employee",1
+9,"car (new)","critical",2134,"none","other",48,3,"skilled employee",1
+6,"radio/tv","repaid",2647,"none","real estate",44,1,"skilled employee",1
+10,"car (new)","critical",2241,"none","real estate",48,2,"unskilled resident",1
+12,"car (used)","critical",1804,"none","building society savings",44,1,"skilled employee",1
+10,"furniture","critical",2069,"none","other",26,2,"skilled employee",1
+6,"furniture","repaid",1374,"none","real estate",36,1,"unskilled resident",1
+6,"radio/tv","fully repaid",426,"none","other",39,1,"unskilled resident",1
+12,"radio/tv","fully repaid this bank",409,"none","real estate",42,2,"skilled employee",1
+7,"radio/tv","repaid",2415,"guarantor","real estate",34,1,"skilled employee",1
+60,"business","delayed",6836,"none","unknown/none",63,2,"skilled employee",2
+18,"business","repaid",1913,"none","real estate",36,1,"skilled employee",1
+24,"furniture","repaid",4020,"none","other",27,1,"skilled employee",1
+18,"car (new)","repaid",5866,"none","other",30,2,"skilled employee",1
+12,"business","critical",1264,"none","unknown/none",57,1,"unskilled resident",1
+12,"furniture","repaid",1474,"none","building society savings",33,1,"mangement self-employed",1
+45,"radio/tv","critical",4746,"none","building society savings",25,2,"unskilled resident",2
+48,"education","critical",6110,"none","unknown/none",31,1,"skilled employee",1
+18,"radio/tv","repaid",2100,"co-applicant","real estate",37,1,"skilled employee",2
+10,"domestic appliances","repaid",1225,"none","other",37,1,"skilled employee",1
+9,"radio/tv","repaid",458,"none","real estate",24,1,"skilled employee",1
+30,"radio/tv","repaid",2333,"none","other",30,1,"mangement self-employed",1
+12,"radio/tv","repaid",1158,"none","other",26,1,"skilled employee",1
+18,"repairs","delayed",6204,"none","real estate",44,1,"unskilled resident",1
+30,"car (used)","critical",6187,"none","other",24,2,"skilled employee",1
+48,"car (used)","critical",6143,"none","unknown/none",58,2,"unskilled resident",2
+11,"car (new)","critical",1393,"none","other",35,2,"mangement self-employed",1
+36,"radio/tv","repaid",2299,"none","other",39,1,"skilled employee",1
+6,"car (used)","repaid",1352,"none","building society savings",23,1,"unemployed non-resident",1
+11,"car (new)","critical",7228,"none","building society savings",39,2,"unskilled resident",1
+12,"radio/tv","repaid",2073,"co-applicant","real estate",28,1,"skilled employee",1
+24,"furniture","delayed",2333,"none","building society savings",29,1,"unskilled resident",1
+27,"car (used)","delayed",5965,"none","other",30,2,"mangement self-employed",1
+12,"radio/tv","repaid",1262,"none","other",25,1,"skilled employee",1
+18,"car (used)","repaid",3378,"none","building society savings",31,1,"skilled employee",1
+36,"car (new)","delayed",2225,"none","unknown/none",57,2,"skilled employee",2
+6,"car (new)","fully repaid this bank",783,"guarantor","real estate",26,1,"unskilled resident",1
+12,"radio/tv","repaid",6468,"none","unknown/none",52,1,"mangement self-employed",2
+36,"radio/tv","critical",9566,"none","other",31,2,"skilled employee",1
+18,"car (new)","repaid",1961,"none","other",23,1,"mangement self-employed",1
+36,"furniture","critical",6229,"co-applicant","unknown/none",23,2,"unskilled resident",2
+9,"business","repaid",1391,"none","real estate",27,1,"skilled employee",1
+15,"radio/tv","critical",1537,"guarantor","real estate",50,2,"skilled employee",1
+36,"business","fully repaid",1953,"none","unknown/none",61,1,"mangement self-employed",2
+48,"business","fully repaid",14421,"none","other",25,1,"skilled employee",2
+24,"radio/tv","repaid",3181,"none","building society savings",26,1,"skilled employee",1
+27,"repairs","repaid",5190,"none","building society savings",48,4,"skilled employee",1
+12,"radio/tv","repaid",2171,"none","other",29,1,"skilled employee",1
+12,"car (new)","repaid",1007,"none","real estate",22,1,"skilled employee",1
+36,"education","repaid",1819,"none","unknown/none",37,1,"skilled employee",2
+36,"radio/tv","repaid",2394,"none","other",25,1,"skilled employee",1
+36,"car (used)","repaid",8133,"none","building society savings",30,1,"skilled employee",1
+7,"radio/tv","critical",730,"none","building society savings",46,2,"unskilled resident",1
+8,"others","critical",1164,"none","unknown/none",51,2,"mangement self-employed",1
+42,"business","critical",5954,"none","real estate",41,2,"unskilled resident",1
+36,"education","repaid",1977,"none","unknown/none",40,1,"mangement self-employed",2
+12,"car (used)","critical",1526,"none","unknown/none",66,2,"mangement self-employed",1
+42,"radio/tv","repaid",3965,"none","other",34,1,"skilled employee",2
+11,"radio/tv","delayed",4771,"none","building society savings",51,1,"skilled employee",1
+54,"car (used)","fully repaid",9436,"none","building society savings",39,1,"unskilled resident",1
+30,"furniture","repaid",3832,"none","building society savings",22,1,"skilled employee",1
+24,"radio/tv","repaid",5943,"none","other",44,2,"skilled employee",2
+15,"radio/tv","repaid",1213,"none","building society savings",47,1,"skilled employee",1
+18,"business","repaid",1568,"none","building society savings",24,1,"unskilled resident",1
+24,"others","repaid",1755,"guarantor","real estate",58,1,"unskilled resident",1
+10,"radio/tv","repaid",2315,"none","real estate",52,1,"unskilled resident",1
+12,"business","critical",1412,"guarantor","real estate",29,2,"mangement self-employed",1
+18,"furniture","critical",1295,"none","building society savings",27,2,"skilled employee",1
+36,"education","repaid",12612,"none","unknown/none",47,1,"skilled employee",2
+18,"car (new)","repaid",2249,"none","other",30,1,"mangement self-employed",1
+12,"repairs","fully repaid",1108,"none","real estate",28,2,"skilled employee",2
+12,"radio/tv","critical",618,"none","real estate",56,1,"skilled employee",1
+12,"car (used)","critical",1409,"none","real estate",54,1,"skilled employee",1
+12,"radio/tv","critical",797,"none","building society savings",33,1,"unskilled resident",2
+24,"furniture","critical",3617,"co-applicant","unknown/none",20,2,"skilled employee",1
+12,"car (new)","repaid",1318,"none","real estate",54,1,"skilled employee",1
+54,"business","fully repaid",15945,"none","unknown/none",58,1,"skilled employee",2
+12,"education","critical",2012,"none","other",61,1,"skilled employee",1
+18,"business","repaid",2622,"none","other",34,1,"skilled employee",1
+36,"radio/tv","critical",2337,"none","real estate",36,1,"skilled employee",1
+20,"car (used)","delayed",7057,"none","building society savings",36,2,"mangement self-employed",1
+24,"car (new)","repaid",1469,"none","real estate",41,1,"unskilled resident",1
+36,"radio/tv","repaid",2323,"none","other",24,1,"skilled employee",1
+6,"radio/tv","delayed",932,"none","real estate",24,1,"skilled employee",1
+9,"furniture","critical",1919,"none","other",35,1,"skilled employee",1
+12,"car (used)","repaid",2445,"none","other",26,1,"skilled employee",1
+24,"others","critical",11938,"co-applicant","other",39,2,"mangement self-employed",2
+18,"car (new)","fully repaid this bank",6458,"none","unknown/none",39,2,"mangement self-employed",2
+12,"car (new)","repaid",6078,"none","other",32,1,"skilled employee",1
+24,"furniture","repaid",7721,"none","building society savings",30,1,"skilled employee",1
+14,"business","repaid",1410,"none","real estate",35,1,"skilled employee",1
+6,"business","delayed",1449,"none","other",31,2,"skilled employee",1
+15,"education","repaid",392,"none","building society savings",23,1,"skilled employee",1
+18,"car (new)","repaid",6260,"none","real estate",28,1,"unskilled resident",1
+36,"car (new)","critical",7855,"none","real estate",25,2,"skilled employee",2
+12,"radio/tv","repaid",1680,"none","real estate",35,1,"skilled employee",1
+48,"radio/tv","critical",3578,"none","real estate",47,1,"skilled employee",1
+42,"radio/tv","repaid",7174,"none","other",30,1,"mangement self-employed",2
+10,"furniture","critical",2132,"co-applicant","real estate",27,2,"skilled employee",1
+33,"furniture","critical",4281,"none","other",23,2,"skilled employee",2
+12,"car (new)","critical",2366,"none","other",36,1,"mangement self-employed",1
+21,"radio/tv","repaid",1835,"none","real estate",25,2,"skilled employee",2
+24,"car (used)","critical",3868,"none","other",41,2,"mangement self-employed",1
+12,"furniture","repaid",1768,"none","real estate",24,1,"unskilled resident",1
+10,"car (new)","critical",781,"none","unknown/none",63,2,"skilled employee",1
+18,"furniture","repaid",1924,"none","real estate",27,1,"skilled employee",2
+12,"car (new)","critical",2121,"none","building society savings",30,2,"skilled employee",1
+12,"radio/tv","repaid",701,"none","real estate",40,1,"unskilled resident",1
+12,"repairs","repaid",639,"none","other",30,1,"skilled employee",2
+12,"car (used)","critical",1860,"none","other",34,2,"mangement self-employed",1
+12,"car (new)","critical",3499,"co-applicant","real estate",29,2,"skilled employee",2
+48,"car (new)","repaid",8487,"none","other",24,1,"skilled employee",1
+36,"education","delayed",6887,"none","building society savings",29,1,"skilled employee",2
+15,"furniture","repaid",2708,"none","building society savings",27,2,"unskilled resident",1
+18,"furniture","repaid",1984,"none","unknown/none",47,2,"skilled employee",1
+60,"radio/tv","repaid",10144,"none","real estate",21,1,"skilled employee",1
+12,"radio/tv","critical",1240,"none","real estate",38,2,"skilled employee",1
+27,"car (used)","delayed",8613,"none","other",27,2,"skilled employee",1
+12,"radio/tv","repaid",766,"none","real estate",66,1,"unskilled resident",2
+15,"radio/tv","critical",2728,"guarantor","real estate",35,3,"skilled employee",1
+12,"radio/tv","repaid",1881,"none","other",44,1,"unskilled resident",1
+6,"car (new)","repaid",709,"none","real estate",27,1,"unemployed non-resident",1
+36,"radio/tv","repaid",4795,"none","unknown/none",30,1,"mangement self-employed",1
+27,"radio/tv","repaid",3416,"none","other",27,1,"mangement self-employed",1
+18,"furniture","repaid",2462,"none","other",22,1,"skilled employee",2
+21,"furniture","critical",2288,"none","building society savings",23,1,"skilled employee",1
+48,"business","fully repaid this bank",3566,"none","other",30,1,"skilled employee",1
+6,"car (new)","critical",860,"none","unknown/none",39,2,"skilled employee",1
+12,"car (new)","critical",682,"none","other",51,2,"skilled employee",1
+36,"furniture","critical",5371,"guarantor","building society savings",28,2,"skilled employee",1
+18,"radio/tv","critical",1582,"none","other",46,2,"skilled employee",1
+6,"radio/tv","repaid",1346,"none","unknown/none",42,1,"skilled employee",1
+10,"radio/tv","repaid",1924,"none","building society savings",38,1,"skilled employee",1
+36,"radio/tv","repaid",5848,"none","other",24,1,"skilled employee",1
+24,"car (used)","critical",7758,"none","unknown/none",29,1,"skilled employee",1
+24,"business","delayed",6967,"none","other",36,1,"mangement self-employed",1
+12,"furniture","repaid",1282,"none","other",20,1,"skilled employee",2
+9,"repairs","critical",1288,"guarantor","real estate",48,2,"skilled employee",1
+12,"retraining","fully repaid this bank",339,"none","other",45,1,"unskilled resident",1
+24,"car (new)","repaid",3512,"none","other",38,2,"skilled employee",1
+6,"radio/tv","critical",1898,"none","real estate",34,2,"unskilled resident",1
+24,"radio/tv","critical",2872,"none","real estate",36,1,"skilled employee",1
+18,"car (new)","critical",1055,"none","building society savings",30,2,"skilled employee",1
+15,"domestic appliances","repaid",1262,"none","building society savings",36,2,"skilled employee",1
+10,"car (new)","repaid",7308,"none","unknown/none",70,1,"mangement self-employed",1
+36,"car (new)","repaid",909,"none","building society savings",36,1,"skilled employee",1
+6,"furniture","repaid",2978,"none","other",32,1,"skilled employee",1
+18,"furniture","repaid",1131,"none","other",33,1,"skilled employee",2
+11,"furniture","repaid",1577,"none","real estate",20,1,"skilled employee",1
+24,"furniture","repaid",3972,"none","building society savings",25,1,"skilled employee",1
+24,"business","critical",1935,"none","real estate",31,2,"skilled employee",2
+15,"car (new)","fully repaid",950,"none","other",33,2,"skilled employee",2
+12,"furniture","repaid",763,"none","real estate",26,1,"skilled employee",1
+24,"furniture","delayed",2064,"none","building society savings",34,1,"mangement self-employed",2
+8,"radio/tv","repaid",1414,"guarantor","real estate",33,1,"skilled employee",1
+21,"education","delayed",3414,"none","building society savings",26,2,"skilled employee",2
+30,"car (used)","fully repaid this bank",7485,"none","real estate",53,1,"mangement self-employed",2
+12,"furniture","repaid",2577,"none","other",42,1,"skilled employee",1
+6,"radio/tv","critical",338,"none","other",52,2,"skilled employee",1
+12,"radio/tv","repaid",1963,"none","other",31,2,"mangement self-employed",1
+21,"car (new)","critical",571,"none","real estate",65,2,"skilled employee",1
+36,"business","delayed",9572,"none","other",28,2,"skilled employee",2
+36,"business","delayed",4455,"none","real estate",30,2,"mangement self-employed",2
+21,"car (new)","fully repaid this bank",1647,"none","building society savings",40,2,"unskilled resident",2
+24,"furniture","critical",3777,"none","real estate",50,1,"skilled employee",1
+18,"car (new)","critical",884,"none","other",36,1,"skilled employee",2
+15,"radio/tv","critical",1360,"none","building society savings",31,2,"skilled employee",1
+9,"car (used)","fully repaid this bank",5129,"none","unknown/none",74,1,"mangement self-employed",2
+16,"car (new)","critical",1175,"none","other",68,3,"unemployed non-resident",1
+12,"radio/tv","repaid",674,"none","building society savings",20,1,"skilled employee",2
+18,"furniture","fully repaid",3244,"none","other",33,2,"skilled employee",1
+24,"business","repaid",4591,"none","building society savings",54,3,"mangement self-employed",2
+48,"business","fully repaid",3844,"none","unknown/none",34,1,"unskilled resident",2
+27,"business","repaid",3915,"none","other",36,1,"skilled employee",2
+6,"radio/tv","repaid",2108,"none","real estate",29,1,"skilled employee",1
+45,"radio/tv","repaid",3031,"guarantor","building society savings",21,1,"skilled employee",2
+9,"education","critical",1501,"none","other",34,2,"mangement self-employed",2
+6,"radio/tv","critical",1382,"none","other",28,2,"skilled employee",1
+12,"furniture","repaid",951,"none","other",27,4,"skilled employee",2
+24,"car (used)","repaid",2760,"none","unknown/none",36,1,"skilled employee",1
+18,"furniture","delayed",4297,"none","unknown/none",40,1,"mangement self-employed",2
+9,"education","critical",936,"none","other",52,2,"skilled employee",1
+12,"car (new)","repaid",1168,"none","real estate",27,1,"unskilled resident",1
+27,"business","delayed",5117,"none","other",26,2,"skilled employee",1
+12,"retraining","repaid",902,"none","building society savings",21,1,"skilled employee",2
+12,"car (new)","critical",1495,"none","real estate",38,2,"unskilled resident",1
+30,"car (used)","critical",10623,"none","unknown/none",38,3,"mangement self-employed",1
+12,"furniture","critical",1935,"none","real estate",43,3,"skilled employee",1
+12,"domestic appliances","critical",1424,"none","building society savings",26,1,"skilled employee",1
+24,"business","repaid",6568,"none","other",21,1,"unskilled resident",1
+12,"car (used)","repaid",1413,"none","building society savings",55,1,"skilled employee",1
+9,"radio/tv","critical",3074,"none","real estate",33,2,"skilled employee",1
+36,"radio/tv","repaid",3835,"none","real estate",45,1,"unskilled resident",1
+27,"business","fully repaid",5293,"none","building society savings",50,2,"skilled employee",2
+30,"business","delayed",1908,"none","real estate",66,1,"mangement self-employed",2
+36,"radio/tv","critical",3342,"none","other",51,1,"skilled employee",1
+6,"retraining","critical",932,"none","building society savings",39,2,"unskilled resident",1
+18,"business","fully repaid",3104,"none","building society savings",31,1,"skilled employee",1
+36,"radio/tv","repaid",3913,"none","real estate",23,1,"skilled employee",1
+24,"furniture","repaid",3021,"none","real estate",24,1,"unskilled resident",1
+10,"car (new)","repaid",1364,"none","other",64,1,"skilled employee",1
+12,"radio/tv","repaid",625,"guarantor","real estate",26,1,"unskilled resident",1
+12,"education","repaid",1200,"none","building society savings",23,1,"skilled employee",1
+12,"radio/tv","repaid",707,"none","real estate",30,2,"skilled employee",1
+24,"business","delayed",2978,"none","real estate",32,2,"skilled employee",1
+15,"car (used)","repaid",4657,"none","other",30,1,"skilled employee",1
+36,"repairs","fully repaid",2613,"none","other",27,2,"skilled employee",1
+48,"radio/tv","repaid",10961,"co-applicant","unknown/none",27,2,"skilled employee",2
+12,"furniture","repaid",7865,"none","unknown/none",53,1,"mangement self-employed",2
+9,"radio/tv","repaid",1478,"none","other",22,1,"skilled employee",2
+24,"furniture","repaid",3149,"none","unknown/none",22,1,"skilled employee",1
+36,"radio/tv","repaid",4210,"none","other",26,1,"skilled employee",2
+9,"car (new)","repaid",2507,"none","unknown/none",51,1,"unskilled resident",1
+12,"radio/tv","repaid",2141,"none","unknown/none",35,1,"skilled employee",1
+18,"radio/tv","repaid",866,"guarantor","real estate",25,1,"unskilled resident",1
+4,"radio/tv","critical",1544,"none","real estate",42,3,"unskilled resident",1
+24,"radio/tv","repaid",1823,"none","other",30,1,"mangement self-employed",2
+6,"car (new)","repaid",14555,"none","building society savings",23,1,"unemployed non-resident",2
+21,"business","repaid",2767,"none","other",61,2,"unskilled resident",2
+12,"radio/tv","critical",1291,"none","building society savings",35,2,"skilled employee",1
+30,"radio/tv","repaid",2522,"guarantor","building society savings",39,1,"skilled employee",1
+24,"car (new)","repaid",915,"none","other",29,1,"skilled employee",2
+6,"radio/tv","repaid",1595,"none","building society savings",51,1,"skilled employee",1
+48,"car (used)","fully repaid",4605,"none","unknown/none",24,2,"skilled employee",2
+12,"business","critical",1185,"none","real estate",27,2,"skilled employee",1
+12,"retraining","fully repaid this bank",3447,"none","real estate",35,1,"unskilled resident",1
+24,"business","repaid",1258,"none","real estate",25,1,"skilled employee",1
+12,"radio/tv","critical",717,"none","real estate",52,3,"skilled employee",1
+6,"car (new)","fully repaid",1204,"none","unknown/none",35,1,"skilled employee",1
+24,"furniture","repaid",1925,"none","real estate",26,1,"skilled employee",1
+18,"radio/tv","repaid",433,"co-applicant","real estate",22,1,"skilled employee",2
+6,"car (new)","critical",666,"none","real estate",39,2,"unskilled resident",1
+12,"furniture","repaid",2251,"none","other",46,1,"unskilled resident",1
+30,"car (new)","repaid",2150,"guarantor","unknown/none",24,1,"skilled employee",2
+24,"furniture","delayed",4151,"none","building society savings",35,2,"skilled employee",1
+9,"furniture","repaid",2030,"none","other",24,1,"skilled employee",1
+60,"radio/tv","delayed",7418,"none","real estate",27,1,"unskilled resident",1
+24,"radio/tv","critical",2684,"none","real estate",35,2,"unskilled resident",1
+12,"radio/tv","fully repaid this bank",2149,"none","unknown/none",29,1,"skilled employee",2
+15,"car (used)","repaid",3812,"none","other",23,1,"skilled employee",1
+11,"radio/tv","critical",1154,"none","real estate",57,3,"unskilled resident",1
+12,"furniture","repaid",1657,"none","real estate",27,1,"skilled employee",1
+24,"radio/tv","repaid",1603,"none","other",55,1,"skilled employee",1
+18,"car (new)","critical",5302,"none","unknown/none",36,3,"mangement self-employed",1
+12,"education","critical",2748,"none","unknown/none",57,3,"unskilled resident",1
+10,"car (new)","critical",1231,"none","real estate",32,2,"unskilled resident",1
+15,"radio/tv","repaid",802,"none","other",37,1,"skilled employee",2
+36,"business","critical",6304,"none","real estate",36,2,"skilled employee",1
+24,"radio/tv","repaid",1533,"none","other",38,1,"skilled employee",1
+14,"car (new)","repaid",8978,"none","building society savings",45,1,"mangement self-employed",2
+24,"radio/tv","repaid",999,"none","other",25,2,"skilled employee",1
+18,"car (new)","repaid",2662,"none","building society savings",32,1,"skilled employee",1
+12,"furniture","critical",1402,"none","other",37,1,"skilled employee",1
+48,"car (new)","fully repaid this bank",12169,"co-applicant","unknown/none",36,1,"mangement self-employed",1
+48,"radio/tv","repaid",3060,"none","real estate",28,2,"skilled employee",2
+30,"repairs","repaid",11998,"none","unknown/none",34,1,"unskilled resident",2
+9,"radio/tv","repaid",2697,"none","real estate",32,1,"skilled employee",1
+18,"radio/tv","critical",2404,"none","other",26,2,"skilled employee",1
+12,"furniture","repaid",1262,"none","building society savings",49,1,"unskilled resident",1
+6,"furniture","repaid",4611,"none","building society savings",32,1,"skilled employee",2
+24,"radio/tv","repaid",1901,"none","other",29,1,"mangement self-employed",1
+15,"car (used)","critical",3368,"none","unknown/none",23,2,"skilled employee",1
+12,"furniture","repaid",1574,"none","real estate",50,1,"skilled employee",1
+18,"radio/tv","fully repaid this bank",1445,"none","other",49,1,"unskilled resident",1
+15,"furniture","critical",1520,"none","building society savings",63,1,"skilled employee",1
+24,"car (new)","critical",3878,"none","other",37,1,"skilled employee",1
+47,"car (new)","repaid",10722,"none","real estate",35,1,"unskilled resident",1
+48,"car (used)","repaid",4788,"none","building society savings",26,1,"skilled employee",1
+48,"others","delayed",7582,"none","unknown/none",31,1,"mangement self-employed",1
+12,"radio/tv","repaid",1092,"guarantor","real estate",49,2,"skilled employee",1
+24,"radio/tv","delayed",1024,"none","real estate",48,1,"skilled employee",2
+12,"business","repaid",1076,"none","real estate",26,1,"skilled employee",1
+36,"car (used)","repaid",9398,"none","other",28,1,"mangement self-employed",2
+24,"car (used)","critical",6419,"none","unknown/none",44,2,"mangement self-employed",1
+42,"car (used)","critical",4796,"none","unknown/none",56,1,"skilled employee",1
+48,"business","critical",7629,"none","other",46,2,"mangement self-employed",1
+48,"furniture","repaid",9960,"none","other",26,1,"skilled employee",2
+12,"car (used)","repaid",4675,"none","other",20,1,"skilled employee",1
+10,"car (new)","repaid",1287,"co-applicant","building society savings",45,1,"unskilled resident",1
+18,"furniture","repaid",2515,"none","real estate",43,1,"skilled employee",1
+21,"furniture","critical",2745,"none","other",32,2,"skilled employee",1
+6,"car (new)","repaid",672,"none","real estate",54,1,"unemployed non-resident",1
+36,"radio/tv","fully repaid",3804,"none","other",42,1,"skilled employee",2
+24,"car (new)","critical",1344,"none","real estate",37,2,"unskilled resident",2
+10,"car (new)","critical",1038,"co-applicant","building society savings",49,2,"skilled employee",1
+48,"car (new)","critical",10127,"none","unknown/none",44,1,"skilled employee",2
+6,"furniture","repaid",1543,"none","real estate",33,1,"skilled employee",1
+30,"car (used)","repaid",4811,"none","building society savings",24,1,"unskilled resident",1
+12,"radio/tv","repaid",727,"none","unknown/none",33,1,"unskilled resident",2
+8,"furniture","repaid",1237,"none","real estate",24,1,"skilled employee",2
+9,"car (new)","repaid",276,"none","real estate",22,1,"unskilled resident",1
+48,"others","repaid",5381,"none","unknown/none",40,1,"unemployed non-resident",1
+24,"furniture","repaid",5511,"none","other",25,1,"skilled employee",1
+24,"furniture","repaid",3749,"none","other",26,1,"skilled employee",1
+12,"car (new)","repaid",685,"none","other",25,1,"unskilled resident",2
+4,"car (new)","repaid",1494,"none","real estate",29,1,"unskilled resident",1
+36,"furniture","fully repaid this bank",2746,"none","other",31,1,"skilled employee",2
+12,"furniture","repaid",708,"guarantor","building society savings",38,1,"unskilled resident",1
+24,"furniture","repaid",4351,"none","building society savings",48,1,"unskilled resident",1
+12,"education","critical",701,"none","other",32,2,"skilled employee",1
+15,"furniture","delayed",3643,"none","building society savings",27,2,"unskilled resident",1
+30,"car (new)","critical",4249,"none","other",28,2,"mangement self-employed",2
+24,"radio/tv","repaid",1938,"none","building society savings",32,1,"skilled employee",2
+24,"car (used)","repaid",2910,"none","unknown/none",34,1,"mangement self-employed",1
+18,"furniture","repaid",2659,"none","other",28,1,"skilled employee",1
+18,"car (new)","critical",1028,"none","real estate",36,2,"skilled employee",1
+8,"car (new)","critical",3398,"none","real estate",39,2,"unskilled resident",1
+12,"furniture","critical",5801,"none","building society savings",49,1,"skilled employee",1
+24,"car (new)","repaid",1525,"none","other",34,1,"skilled employee",1
+36,"radio/tv","repaid",4473,"none","other",31,1,"skilled employee",1
+6,"radio/tv","repaid",1068,"none","other",28,1,"skilled employee",1
+24,"car (used)","critical",6615,"none","unknown/none",75,2,"mangement self-employed",1
+18,"education","critical",1864,"none","real estate",30,2,"skilled employee",2
+60,"car (new)","repaid",7408,"none","building society savings",24,1,"mangement self-employed",2
+48,"car (used)","critical",11590,"none","other",24,2,"unskilled resident",2
+24,"furniture","fully repaid",4110,"none","unknown/none",23,2,"skilled employee",2
+6,"furniture","critical",3384,"none","real estate",44,1,"mangement self-employed",2
+13,"radio/tv","repaid",2101,"guarantor","building society savings",23,1,"unskilled resident",1
+15,"domestic appliances","repaid",1275,"none","other",24,1,"skilled employee",2
+24,"furniture","repaid",4169,"none","building society savings",28,1,"skilled employee",1
+10,"furniture","repaid",1521,"none","other",31,1,"unskilled resident",1
+24,"education","critical",5743,"none","unknown/none",24,2,"skilled employee",1
+21,"furniture","repaid",3599,"none","other",26,1,"unskilled resident",1
+18,"radio/tv","repaid",3213,"none","real estate",25,1,"skilled employee",1
+18,"business","repaid",4439,"co-applicant","real estate",33,1,"mangement self-employed",1
+10,"car (new)","repaid",3949,"guarantor","building society savings",37,1,"unskilled resident",1
+15,"radio/tv","critical",1459,"none","other",43,1,"unskilled resident",1
+13,"radio/tv","critical",882,"guarantor","real estate",23,2,"skilled employee",1
+24,"radio/tv","repaid",3758,"none","unknown/none",23,1,"unemployed non-resident",1
+6,"business","delayed",1743,"none","real estate",34,2,"unskilled resident",1
+9,"education","critical",1136,"none","unknown/none",32,2,"skilled employee",2
+9,"domestic appliances","repaid",1236,"none","real estate",23,1,"skilled employee",1
+9,"furniture","repaid",959,"none","other",29,1,"skilled employee",2
+18,"car (used)","critical",3229,"none","unknown/none",38,1,"mangement self-employed",1
+12,"radio/tv","fully repaid",6199,"none","building society savings",28,2,"skilled employee",2
+10,"education","repaid",727,"none","unknown/none",46,1,"skilled employee",1
+24,"car (new)","repaid",1246,"none","real estate",23,1,"unskilled resident",2
+12,"radio/tv","critical",2331,"co-applicant","real estate",49,1,"skilled employee",1
+36,"radio/tv","delayed",4463,"none","other",26,2,"mangement self-employed",2
+12,"radio/tv","repaid",776,"none","real estate",28,1,"skilled employee",1
+30,"furniture","repaid",2406,"none","real estate",23,1,"skilled employee",2
+18,"education","repaid",1239,"none","unknown/none",61,1,"skilled employee",1
+12,"radio/tv","repaid",3399,"none","other",37,1,"mangement self-employed",1
+12,"car (new)","delayed",2247,"none","other",36,2,"skilled employee",1
+6,"furniture","repaid",1766,"none","building society savings",21,1,"skilled employee",1
+18,"furniture","repaid",2473,"none","other",25,1,"unemployed non-resident",2
+12,"business","repaid",1542,"none","other",36,1,"skilled employee",1
+18,"car (used)","critical",3850,"none","other",27,2,"skilled employee",1
+18,"furniture","repaid",3650,"none","other",22,1,"skilled employee",1
+36,"furniture","repaid",3446,"none","other",42,1,"skilled employee",2
+18,"furniture","repaid",3001,"none","real estate",40,1,"skilled employee",1
+36,"car (new)","repaid",3079,"none","real estate",36,1,"skilled employee",1
+18,"radio/tv","critical",6070,"none","other",33,2,"skilled employee",1
+10,"furniture","critical",2146,"none","real estate",23,2,"skilled employee",1
+60,"car (new)","critical",13756,"none","unknown/none",63,1,"mangement self-employed",1
+60,"others","fully repaid this bank",14782,"none","unknown/none",60,2,"mangement self-employed",2
+48,"business","fully repaid this bank",7685,"guarantor","other",37,1,"skilled employee",2
+18,"radio/tv","delayed",2320,"none","real estate",34,2,"skilled employee",1
+7,"radio/tv","delayed",846,"none","unknown/none",36,1,"skilled employee",1
+36,"car (new)","repaid",14318,"none","unknown/none",57,1,"mangement self-employed",2
+6,"car (new)","critical",362,"none","other",52,2,"unskilled resident",1
+20,"furniture","repaid",2212,"none","other",39,1,"skilled employee",1
+18,"car (used)","repaid",12976,"none","unknown/none",38,1,"mangement self-employed",2
+22,"car (new)","repaid",1283,"none","building society savings",25,1,"skilled employee",1
+12,"car (new)","repaid",1330,"none","real estate",26,1,"skilled employee",1
+30,"business","delayed",4272,"none","building society savings",26,2,"unskilled resident",1
+18,"radio/tv","critical",2238,"none","other",25,2,"skilled employee",1
+18,"radio/tv","repaid",1126,"none","real estate",21,1,"skilled employee",1
+18,"furniture","critical",7374,"none","building society savings",40,2,"mangement self-employed",1
+15,"business","critical",2326,"none","other",27,1,"skilled employee",1
+9,"business","repaid",1449,"none","other",27,2,"skilled employee",1
+18,"car (new)","repaid",1820,"none","building society savings",30,1,"mangement self-employed",1
+12,"furniture","repaid",983,"none","real estate",19,1,"unskilled resident",1
+36,"car (new)","repaid",3249,"none","unknown/none",39,1,"mangement self-employed",1
+6,"radio/tv","critical",1957,"none","other",31,1,"skilled employee",1
+9,"furniture","critical",2406,"none","other",31,1,"mangement self-employed",1
+39,"education","delayed",11760,"none","unknown/none",32,1,"skilled employee",1
+12,"furniture","repaid",2578,"none","unknown/none",55,1,"mangement self-employed",1
+36,"furniture","critical",2348,"none","building society savings",46,2,"skilled employee",1
+12,"car (new)","repaid",1223,"none","real estate",46,2,"skilled employee",2
+24,"radio/tv","critical",1516,"none","real estate",43,2,"unskilled resident",1
+18,"radio/tv","repaid",1473,"none","real estate",39,1,"skilled employee",1
+18,"business","critical",1887,"none","real estate",28,2,"skilled employee",1
+24,"business","delayed",8648,"none","other",27,2,"skilled employee",2
+14,"car (new)","delayed",802,"none","other",27,2,"unskilled resident",1
+18,"car (new)","delayed",2899,"none","other",43,1,"skilled employee",1
+24,"radio/tv","repaid",2039,"none","building society savings",22,1,"skilled employee",2
+24,"car (used)","critical",2197,"none","other",43,2,"skilled employee",1
+15,"radio/tv","repaid",1053,"none","real estate",27,1,"skilled employee",1
+24,"radio/tv","repaid",3235,"none","other",26,1,"mangement self-employed",1
+12,"car (new)","critical",939,"none","real estate",28,3,"skilled employee",2
+24,"radio/tv","repaid",1967,"none","other",20,1,"skilled employee",1
+33,"car (used)","critical",7253,"none","other",35,2,"mangement self-employed",1
+12,"business","critical",2292,"none","other",42,2,"mangement self-employed",2
+10,"car (new)","repaid",1597,"none","unknown/none",40,1,"unskilled resident",1
+24,"car (new)","repaid",1381,"none","building society savings",35,1,"skilled employee",2
+36,"car (used)","critical",5842,"none","building society savings",35,2,"skilled employee",1
+12,"car (new)","repaid",2579,"none","real estate",33,1,"unskilled resident",2
+18,"education","delayed",8471,"none","other",23,2,"skilled employee",1
+21,"car (new)","repaid",2782,"none","other",31,1,"mangement self-employed",1
+18,"car (new)","repaid",1042,"none","building society savings",33,1,"skilled employee",2
+15,"car (new)","repaid",3186,"none","other",20,1,"skilled employee",1
+12,"car (used)","repaid",2028,"none","other",30,1,"skilled employee",1
+12,"car (new)","critical",958,"none","real estate",47,2,"unskilled resident",1
+21,"furniture","delayed",1591,"none","real estate",34,2,"mangement self-employed",1
+12,"furniture","repaid",2762,"none","building society savings",25,1,"skilled employee",2
+18,"car (used)","repaid",2779,"none","other",21,1,"skilled employee",1
+28,"radio/tv","critical",2743,"none","other",29,2,"skilled employee",1
+18,"radio/tv","critical",1149,"none","real estate",46,2,"skilled employee",1
+9,"furniture","repaid",1313,"none","other",20,1,"skilled employee",1
+18,"repairs","critical",1190,"none","unknown/none",55,3,"unemployed non-resident",2
+5,"business","repaid",3448,"none","real estate",74,1,"unskilled resident",1
+24,"others","repaid",11328,"co-applicant","other",29,2,"mangement self-employed",2
+6,"furniture","critical",1872,"none","unknown/none",36,3,"mangement self-employed",1
+24,"repairs","critical",2058,"none","real estate",33,2,"skilled employee",1
+9,"furniture","repaid",2136,"none","real estate",25,1,"skilled employee",1
+12,"radio/tv","repaid",1484,"none","real estate",25,1,"skilled employee",2
+6,"repairs","repaid",660,"none","real estate",23,1,"unskilled resident",1
+24,"car (new)","critical",1287,"none","real estate",37,2,"skilled employee",1
+42,"repairs","critical",3394,"co-applicant","other",65,2,"unemployed non-resident",1
+12,"business","fully repaid this bank",609,"none","real estate",26,1,"unemployed non-resident",2
+12,"car (new)","repaid",1884,"none","other",39,1,"mangement self-employed",1
+12,"furniture","repaid",1620,"co-applicant","building society savings",30,1,"skilled employee",1
+20,"others","delayed",2629,"none","other",29,2,"skilled employee",1
+12,"education","repaid",719,"none","other",41,1,"unskilled resident",2
+48,"furniture","critical",5096,"none","other",30,1,"mangement self-employed",2
+9,"education","critical",1244,"none","building society savings",41,2,"unskilled resident",1
+36,"car (new)","repaid",1842,"none","other",34,1,"skilled employee",2
+7,"radio/tv","repaid",2576,"guarantor","real estate",35,1,"skilled employee",1
+12,"furniture","repaid",1424,"none","real estate",55,1,"mangement self-employed",1
+15,"repairs","delayed",1512,"none","building society savings",61,2,"skilled employee",2
+36,"car (used)","critical",11054,"none","other",30,1,"mangement self-employed",1
+6,"radio/tv","repaid",518,"none","real estate",29,1,"skilled employee",1
+12,"furniture","fully repaid",2759,"none","building society savings",34,2,"skilled employee",1
+24,"car (used)","repaid",2670,"none","other",35,1,"mangement self-employed",1
+24,"car (new)","repaid",4817,"co-applicant","building society savings",31,1,"skilled employee",2
+24,"car (used)","repaid",2679,"none","unknown/none",29,1,"mangement self-employed",1
+11,"car (new)","critical",3905,"none","real estate",36,2,"skilled employee",1
+12,"car (used)","repaid",3386,"none","unknown/none",35,1,"skilled employee",2
+6,"domestic appliances","repaid",343,"none","real estate",27,1,"skilled employee",1
+18,"radio/tv","repaid",4594,"none","other",32,1,"skilled employee",1
+36,"furniture","repaid",3620,"guarantor","building society savings",37,1,"skilled employee",1
+15,"car (new)","repaid",1721,"none","real estate",36,1,"skilled employee",1
+12,"furniture","repaid",3017,"none","real estate",34,1,"mangement self-employed",1
+12,"retraining","repaid",754,"none","building society savings",38,2,"skilled employee",1
+18,"business","repaid",1950,"none","other",34,2,"skilled employee",1
+24,"car (used)","repaid",2924,"guarantor","unknown/none",63,1,"skilled employee",1
+24,"radio/tv","delayed",1659,"none","other",29,1,"unskilled resident",2
+48,"radio/tv","delayed",7238,"none","other",32,2,"skilled employee",1
+33,"business","delayed",2764,"none","other",26,2,"skilled employee",1
+24,"car (used)","delayed",4679,"none","other",35,2,"unskilled resident",1
+24,"radio/tv","repaid",3092,"none","other",22,1,"skilled employee",2
+6,"education","repaid",448,"none","building society savings",23,1,"skilled employee",2
+9,"car (new)","repaid",654,"none","other",28,1,"unskilled resident",2
+6,"retraining","repaid",1238,"none","building society savings",36,1,"mangement self-employed",1
+18,"radio/tv","critical",1245,"none","other",33,1,"skilled employee",2
+18,"furniture","fully repaid",3114,"none","building society savings",26,1,"skilled employee",2
+39,"car (used)","repaid",2569,"none","other",24,1,"skilled employee",1
+24,"radio/tv","repaid",5152,"none","other",25,1,"skilled employee",1
+12,"business","repaid",1037,"none","real estate",39,1,"unskilled resident",1
+15,"furniture","critical",1478,"none","other",44,2,"skilled employee",1
+12,"radio/tv","critical",3573,"none","real estate",23,1,"unskilled resident",1
+24,"car (new)","repaid",1201,"none","building society savings",26,1,"skilled employee",1
+30,"furniture","repaid",3622,"none","building society savings",57,2,"skilled employee",1
+15,"furniture","delayed",960,"none","building society savings",30,2,"skilled employee",1
+12,"car (new)","critical",1163,"none","real estate",44,1,"skilled employee",1
+6,"car (new)","delayed",1209,"none","building society savings",47,1,"mangement self-employed",2
+12,"radio/tv","repaid",3077,"none","other",52,1,"skilled employee",1
+24,"car (new)","repaid",3757,"co-applicant","unknown/none",62,1,"skilled employee",1
+10,"car (new)","repaid",1418,"none","real estate",35,1,"unskilled resident",1
+6,"car (new)","repaid",3518,"guarantor","building society savings",26,1,"skilled employee",1
+12,"radio/tv","critical",1934,"none","unknown/none",26,2,"skilled employee",1
+27,"business","fully repaid",8318,"none","unknown/none",42,2,"mangement self-employed",2
+6,"radio/tv","critical",1237,"none","building society savings",27,2,"skilled employee",1
+6,"radio/tv","repaid",368,"none","building society savings",38,1,"skilled employee",1
+12,"car (new)","critical",2122,"none","real estate",39,2,"unskilled resident",1
+24,"furniture","repaid",2996,"none","other",20,1,"skilled employee",2
+36,"furniture","repaid",9034,"co-applicant","unknown/none",29,1,"mangement self-employed",2
+24,"furniture","critical",1585,"none","building society savings",40,2,"skilled employee",1
+18,"radio/tv","repaid",1301,"guarantor","real estate",32,1,"unskilled resident",1
+6,"car (new)","critical",1323,"none","other",28,2,"skilled employee",1
+24,"car (new)","repaid",3123,"none","building society savings",27,1,"skilled employee",2
+36,"car (used)","repaid",5493,"none","unknown/none",42,1,"skilled employee",1
+9,"radio/tv","repaid",1126,"none","real estate",49,1,"skilled employee",1
+24,"radio/tv","critical",1216,"none","unknown/none",38,2,"skilled employee",2
+24,"car (new)","repaid",1207,"none","building society savings",24,1,"skilled employee",2
+10,"car (new)","repaid",1309,"guarantor","building society savings",27,1,"unskilled resident",2
+15,"car (used)","critical",2360,"none","other",36,1,"skilled employee",1
+15,"car (new)","fully repaid this bank",6850,"none","building society savings",34,1,"mangement self-employed",2
+24,"radio/tv","repaid",1413,"none","building society savings",28,1,"skilled employee",1
+39,"car (used)","repaid",8588,"none","other",45,1,"mangement self-employed",1
+12,"car (new)","repaid",759,"none","real estate",26,1,"skilled employee",2
+36,"car (used)","repaid",4686,"none","unknown/none",32,1,"mangement self-employed",1
+15,"business","repaid",2687,"none","building society savings",26,1,"skilled employee",1
+12,"radio/tv","delayed",585,"co-applicant","real estate",20,2,"skilled employee",1
+24,"car (new)","repaid",2255,"none","building society savings",54,1,"skilled employee",1
+6,"car (new)","critical",609,"none","building society savings",37,2,"skilled employee",1
+6,"car (new)","critical",1361,"none","real estate",40,1,"unskilled resident",1
+36,"furniture","critical",7127,"none","building society savings",23,2,"skilled employee",2
+6,"car (new)","repaid",1203,"none","building society savings",43,1,"skilled employee",1
+6,"radio/tv","critical",700,"none","unknown/none",36,2,"skilled employee",1
+24,"repairs","critical",5507,"none","unknown/none",44,2,"skilled employee",1
+18,"radio/tv","repaid",3190,"none","real estate",24,1,"skilled employee",2
+48,"furniture","fully repaid",7119,"none","unknown/none",53,2,"skilled employee",2
+24,"car (used)","repaid",3488,"none","other",23,1,"skilled employee",1
+18,"radio/tv","repaid",1113,"guarantor","real estate",26,1,"unskilled resident",1
+26,"car (used)","repaid",7966,"none","other",30,2,"skilled employee",1
+15,"education","critical",1532,"none","other",31,1,"skilled employee",1
+4,"radio/tv","critical",1503,"none","real estate",42,2,"unskilled resident",1
+36,"radio/tv","repaid",2302,"none","other",31,1,"skilled employee",2
+6,"car (new)","repaid",662,"none","real estate",41,1,"unskilled resident",1
+36,"education","repaid",2273,"none","other",32,2,"skilled employee",1
+15,"car (new)","repaid",2631,"none","other",28,2,"skilled employee",2
+12,"car (used)","delayed",1503,"none","real estate",41,1,"skilled employee",1
+24,"radio/tv","repaid",1311,"none","building society savings",26,1,"skilled employee",1
+24,"radio/tv","repaid",3105,"none","other",25,2,"skilled employee",1
+21,"education","critical",2319,"none","other",33,1,"skilled employee",2
+6,"car (new)","repaid",1374,"none","building society savings",75,1,"mangement self-employed",1
+18,"furniture","critical",3612,"none","building society savings",37,1,"skilled employee",1
+48,"car (new)","repaid",7763,"none","unknown/none",42,1,"mangement self-employed",2
+18,"furniture","repaid",3049,"none","building society savings",45,1,"unskilled resident",1
+12,"radio/tv","repaid",1534,"none","real estate",23,1,"skilled employee",2
+24,"car (new)","delayed",2032,"none","unknown/none",60,2,"skilled employee",1
+30,"furniture","repaid",6350,"none","building society savings",31,1,"skilled employee",2
+18,"furniture","repaid",2864,"none","real estate",34,1,"unskilled resident",2
+12,"car (new)","critical",1255,"none","real estate",61,2,"unskilled resident",1
+24,"car (new)","delayed",1333,"none","real estate",43,2,"skilled employee",2
+24,"car (new)","critical",2022,"none","other",37,1,"skilled employee",1
+24,"radio/tv","repaid",1552,"none","other",32,1,"skilled employee",1
+12,"radio/tv","fully repaid this bank",626,"none","real estate",24,1,"unskilled resident",2
+48,"car (used)","critical",8858,"none","unknown/none",35,2,"skilled employee",1
+12,"repairs","critical",996,"none","real estate",23,2,"skilled employee",1
+6,"radio/tv","fully repaid this bank",1750,"none","building society savings",45,1,"unskilled resident",1
+48,"radio/tv","repaid",6999,"guarantor","real estate",34,2,"skilled employee",2
+12,"car (new)","critical",1995,"none","other",27,1,"skilled employee",1
+9,"education","repaid",1199,"none","building society savings",67,2,"mangement self-employed",1
+12,"radio/tv","repaid",1331,"none","other",22,1,"skilled employee",2
+18,"car (new)","fully repaid",2278,"none","other",28,2,"skilled employee",2
+21,"car (new)","fully repaid",5003,"none","building society savings",29,2,"skilled employee",2
+24,"furniture","fully repaid this bank",3552,"none","other",27,1,"skilled employee",2
+18,"furniture","critical",1928,"none","real estate",31,2,"unskilled resident",2
+24,"car (used)","repaid",2964,"none","unknown/none",49,1,"skilled employee",1
+24,"radio/tv","fully repaid this bank",1546,"guarantor","other",24,1,"unskilled resident",2
+6,"radio/tv","delayed",683,"none","building society savings",29,1,"skilled employee",1
+36,"car (new)","repaid",12389,"none","unknown/none",37,1,"skilled employee",2
+24,"business","delayed",4712,"none","building society savings",37,2,"mangement self-employed",1
+24,"radio/tv","delayed",1553,"none","building society savings",23,2,"skilled employee",1
+12,"car (new)","repaid",1372,"none","other",36,1,"skilled employee",2
+24,"radio/tv","critical",2578,"none","other",34,1,"skilled employee",1
+48,"radio/tv","repaid",3979,"none","other",41,2,"skilled employee",1
+48,"radio/tv","repaid",6758,"none","other",31,1,"skilled employee",2
+24,"furniture","repaid",3234,"none","real estate",23,1,"unskilled resident",2
+30,"radio/tv","critical",5954,"co-applicant","other",38,1,"skilled employee",1
+24,"car (used)","repaid",5433,"none","building society savings",26,1,"mangement self-employed",1
+15,"business","repaid",806,"none","building society savings",22,1,"unskilled resident",1
+9,"radio/tv","repaid",1082,"none","other",27,2,"unskilled resident",1
+15,"furniture","critical",2788,"co-applicant","other",24,2,"skilled employee",1
+12,"radio/tv","repaid",2930,"none","real estate",27,1,"skilled employee",1
+24,"education","critical",1927,"none","other",33,2,"skilled employee",1
+36,"car (new)","critical",2820,"none","other",27,2,"skilled employee",2
+24,"retraining","repaid",937,"none","other",27,2,"unskilled resident",1
+18,"car (new)","critical",1056,"guarantor","real estate",30,2,"skilled employee",2
+12,"car (new)","critical",3124,"none","real estate",49,2,"unskilled resident",1
+9,"furniture","repaid",1388,"none","real estate",26,1,"skilled employee",1
+36,"repairs","repaid",2384,"none","unknown/none",33,1,"unskilled resident",2
+12,"car (new)","repaid",2133,"none","unknown/none",52,1,"mangement self-employed",1
+18,"furniture","repaid",2039,"none","real estate",20,1,"skilled employee",2
+9,"car (new)","critical",2799,"none","real estate",36,2,"skilled employee",1
+12,"furniture","repaid",1289,"guarantor","building society savings",21,1,"unskilled resident",1
+18,"domestic appliances","repaid",1217,"none","real estate",47,1,"unskilled resident",2
+12,"furniture","critical",2246,"none","building society savings",60,2,"skilled employee",2
+12,"radio/tv","critical",385,"none","real estate",58,4,"unskilled resident",1
+24,"car (new)","delayed",1965,"none","other",42,2,"skilled employee",1
+21,"business","repaid",1572,"none","real estate",36,1,"unskilled resident",1
+24,"car (new)","repaid",2718,"none","building society savings",20,1,"unskilled resident",2
+24,"others","fully repaid this bank",1358,"none","other",40,1,"mangement self-employed",2
+6,"car (new)","fully repaid this bank",931,"none","building society savings",32,1,"unskilled resident",2
+24,"car (new)","repaid",1442,"none","other",23,2,"skilled employee",2
+24,"business","fully repaid",4241,"none","real estate",36,3,"unskilled resident",2
+18,"car (new)","critical",2775,"none","building society savings",31,2,"skilled employee",2
+24,"business","delayed",3863,"none","unknown/none",32,1,"skilled employee",1
+7,"radio/tv","repaid",2329,"guarantor","real estate",45,1,"skilled employee",1
+9,"furniture","repaid",918,"none","building society savings",30,1,"skilled employee",2
+24,"education","fully repaid this bank",1837,"none","unknown/none",34,1,"unskilled resident",2
+36,"furniture","repaid",3349,"none","other",28,1,"mangement self-employed",2
+10,"furniture","repaid",1275,"none","building society savings",23,1,"skilled employee",1
+24,"furniture","fully repaid this bank",2828,"none","real estate",22,1,"skilled employee",1
+24,"business","critical",4526,"none","real estate",74,1,"mangement self-employed",1
+36,"radio/tv","repaid",2671,"co-applicant","unknown/none",50,1,"skilled employee",2
+18,"radio/tv","repaid",2051,"none","real estate",33,1,"skilled employee",1
+15,"car (used)","repaid",1300,"none","unknown/none",45,1,"skilled employee",1
+12,"domestic appliances","repaid",741,"none","building society savings",22,1,"skilled employee",2
+10,"car (new)","repaid",1240,"none","unknown/none",48,1,"unskilled resident",2
+21,"radio/tv","repaid",3357,"none","other",29,1,"skilled employee",1
+24,"car (used)","fully repaid this bank",3632,"guarantor","other",22,1,"skilled employee",1
+18,"furniture","delayed",1808,"none","real estate",22,1,"skilled employee",2
+48,"business","fully repaid",12204,"none","other",48,1,"mangement self-employed",1
+60,"radio/tv","delayed",9157,"none","unknown/none",27,1,"mangement self-employed",1
+6,"car (new)","critical",3676,"none","real estate",37,3,"skilled employee",1
+30,"furniture","repaid",3441,"co-applicant","other",21,1,"skilled employee",2
+12,"car (new)","repaid",640,"none","real estate",49,1,"unskilled resident",1
+21,"business","critical",3652,"none","building society savings",27,2,"skilled employee",1
+18,"car (new)","critical",1530,"none","building society savings",32,2,"skilled employee",2
+48,"business","repaid",3914,"none","real estate",38,1,"skilled employee",2
+12,"furniture","repaid",1858,"none","other",22,1,"skilled employee",1
+18,"radio/tv","repaid",2600,"none","unknown/none",65,2,"skilled employee",2
+15,"radio/tv","repaid",1979,"none","other",35,1,"skilled employee",1
+6,"furniture","repaid",2116,"none","real estate",41,1,"skilled employee",1
+9,"car (new)","fully repaid this bank",1437,"none","unknown/none",29,1,"skilled employee",2
+42,"furniture","critical",4042,"none","real estate",36,2,"skilled employee",1
+9,"education","repaid",3832,"none","real estate",64,1,"unskilled resident",1
+24,"radio/tv","repaid",3660,"none","other",28,1,"skilled employee",1
+18,"furniture","fully repaid this bank",1553,"none","other",44,1,"skilled employee",2
+15,"radio/tv","repaid",1444,"none","building society savings",23,1,"skilled employee",1
+9,"furniture","repaid",1980,"co-applicant","other",19,2,"skilled employee",2
+24,"car (new)","repaid",1355,"none","other",25,1,"unskilled resident",2
+12,"education","repaid",1393,"none","building society savings",47,3,"skilled employee",1
+24,"radio/tv","repaid",1376,"none","other",28,1,"skilled employee",1
+60,"radio/tv","delayed",15653,"none","other",21,2,"skilled employee",1
+12,"radio/tv","repaid",1493,"none","other",34,1,"skilled employee",1
+42,"radio/tv","delayed",4370,"none","building society savings",26,2,"skilled employee",2
+18,"education","repaid",750,"none","real estate",27,1,"unemployed non-resident",2
+15,"repairs","repaid",1308,"none","other",38,2,"unskilled resident",1
+15,"education","repaid",4623,"none","building society savings",40,1,"mangement self-employed",2
+24,"radio/tv","critical",1851,"guarantor","other",33,2,"skilled employee",1
+18,"radio/tv","critical",1880,"none","building society savings",32,2,"mangement self-employed",1
+36,"business","delayed",7980,"none","other",27,2,"skilled employee",2
+30,"furniture","fully repaid",4583,"guarantor","real estate",32,2,"skilled employee",1
+12,"car (new)","repaid",1386,"none","building society savings",26,1,"skilled employee",2
+24,"car (new)","repaid",947,"none","unknown/none",38,1,"skilled employee",2
+12,"education","repaid",684,"none","other",40,1,"unskilled resident",2
+48,"education","repaid",7476,"none","unknown/none",50,1,"mangement self-employed",1
+12,"furniture","repaid",1922,"none","building society savings",37,1,"unskilled resident",2
+24,"car (new)","repaid",2303,"co-applicant","real estate",45,1,"skilled employee",2
+36,"car (new)","delayed",8086,"none","other",42,4,"mangement self-employed",2
+24,"car (used)","critical",2346,"none","other",35,2,"skilled employee",1
+14,"car (new)","repaid",3973,"none","unknown/none",22,1,"skilled employee",1
+12,"car (new)","repaid",888,"none","other",41,1,"unskilled resident",2
+48,"radio/tv","repaid",10222,"none","other",37,1,"skilled employee",1
+30,"business","fully repaid",4221,"none","other",28,2,"skilled employee",1
+18,"furniture","critical",6361,"none","unknown/none",41,1,"skilled employee",1
+12,"radio/tv","repaid",1297,"none","real estate",23,1,"skilled employee",1
+12,"car (new)","repaid",900,"none","other",23,1,"skilled employee",2
+21,"furniture","repaid",2241,"none","real estate",50,2,"skilled employee",1
+6,"furniture","delayed",1050,"none","building society savings",35,2,"mangement self-employed",1
+6,"education","critical",1047,"none","building society savings",50,1,"unskilled resident",1
+24,"others","critical",6314,"co-applicant","unknown/none",27,2,"mangement self-employed",1
+30,"furniture","fully repaid this bank",3496,"none","other",34,1,"skilled employee",1
+48,"business","fully repaid this bank",3609,"none","real estate",27,1,"skilled employee",1
+12,"car (new)","critical",4843,"co-applicant","building society savings",43,2,"skilled employee",2
+30,"radio/tv","critical",3017,"none","building society savings",47,1,"skilled employee",1
+24,"business","critical",4139,"none","building society savings",27,2,"unskilled resident",1
+36,"business","repaid",5742,"none","other",31,2,"skilled employee",1
+60,"car (new)","repaid",10366,"none","building society savings",42,1,"mangement self-employed",1
+6,"car (new)","critical",2080,"none","other",24,1,"skilled employee",1
+21,"business","delayed",2580,"none","real estate",41,1,"unskilled resident",2
+30,"radio/tv","critical",4530,"none","other",26,1,"mangement self-employed",1
+24,"furniture","critical",5150,"none","other",33,1,"skilled employee",1
+72,"radio/tv","repaid",5595,"none","other",24,1,"skilled employee",2
+24,"radio/tv","repaid",2384,"none","real estate",64,1,"unskilled resident",1
+18,"radio/tv","repaid",1453,"none","real estate",26,1,"skilled employee",1
+6,"education","repaid",1538,"none","unknown/none",56,1,"skilled employee",1
+12,"radio/tv","repaid",2279,"none","unknown/none",37,1,"skilled employee",1
+15,"radio/tv","delayed",1478,"none","real estate",33,2,"skilled employee",1
+24,"radio/tv","critical",5103,"none","unknown/none",47,3,"skilled employee",1
+36,"business","delayed",9857,"none","building society savings",31,2,"unskilled resident",1
+60,"car (new)","repaid",6527,"none","unknown/none",34,1,"skilled employee",1
+10,"radio/tv","critical",1347,"none","building society savings",27,2,"skilled employee",1
+36,"car (new)","delayed",2862,"none","unknown/none",30,1,"skilled employee",1
+9,"radio/tv","repaid",2753,"co-applicant","other",35,1,"skilled employee",1
+12,"car (new)","repaid",3651,"none","building society savings",31,1,"skilled employee",1
+15,"furniture","critical",975,"none","building society savings",25,2,"skilled employee",1
+15,"repairs","repaid",2631,"none","real estate",25,1,"unskilled resident",1
+24,"radio/tv","repaid",2896,"none","other",29,1,"skilled employee",1
+6,"car (new)","critical",4716,"none","real estate",44,2,"unskilled resident",1
+24,"radio/tv","repaid",2284,"none","other",28,1,"skilled employee",1
+6,"car (used)","repaid",1236,"none","building society savings",50,1,"skilled employee",1
+12,"radio/tv","repaid",1103,"guarantor","real estate",29,2,"skilled employee",1
+12,"car (new)","critical",926,"none","building society savings",38,1,"unemployed non-resident",1
+18,"radio/tv","critical",1800,"none","other",24,2,"skilled employee",1
+15,"education","repaid",1905,"none","other",40,1,"mangement self-employed",1
+12,"furniture","repaid",1123,"none","other",29,1,"unskilled resident",2
+48,"car (used)","critical",6331,"none","unknown/none",46,2,"skilled employee",2
+24,"radio/tv","repaid",1377,"none","unknown/none",47,1,"skilled employee",1
+30,"business","delayed",2503,"none","building society savings",41,2,"skilled employee",1
+27,"business","repaid",2528,"none","building society savings",32,1,"skilled employee",1
+15,"car (new)","repaid",5324,"none","unknown/none",35,1,"skilled employee",1
+48,"car (new)","repaid",6560,"none","building society savings",24,1,"skilled employee",2
+12,"furniture","fully repaid",2969,"none","building society savings",25,2,"skilled employee",2
+9,"radio/tv","repaid",1206,"none","real estate",25,1,"skilled employee",1
+9,"radio/tv","repaid",2118,"none","real estate",37,1,"unskilled resident",1
+18,"radio/tv","critical",629,"none","building society savings",32,2,"mangement self-employed",1
+6,"education","fully repaid this bank",1198,"none","unknown/none",35,1,"skilled employee",2
+21,"car (used)","repaid",2476,"none","real estate",46,1,"mangement self-employed",1
+9,"radio/tv","critical",1138,"none","real estate",25,2,"unskilled resident",1
+60,"car (new)","repaid",14027,"none","unknown/none",27,1,"mangement self-employed",2
+30,"car (used)","critical",7596,"none","other",63,2,"skilled employee",1
+30,"radio/tv","critical",3077,"none","other",40,2,"skilled employee",1
+18,"radio/tv","repaid",1505,"none","unknown/none",32,1,"mangement self-employed",1
+24,"radio/tv","critical",3148,"none","other",31,2,"skilled employee",1
+20,"car (used)","fully repaid",6148,"none","other",31,2,"skilled employee",1
+9,"radio/tv","fully repaid",1337,"none","other",34,2,"mangement self-employed",2
+6,"education","fully repaid this bank",433,"none","building society savings",24,1,"skilled employee",2
+12,"car (new)","repaid",1228,"none","real estate",24,1,"unskilled resident",2
+9,"radio/tv","repaid",790,"none","real estate",66,1,"unskilled resident",1
+27,"car (new)","repaid",2570,"none","real estate",21,1,"skilled employee",2
+6,"car (new)","critical",250,"none","real estate",41,2,"unskilled resident",1
+15,"radio/tv","critical",1316,"none","building society savings",47,2,"unskilled resident",1
+18,"radio/tv","repaid",1882,"none","other",25,2,"skilled employee",2
+48,"business","fully repaid this bank",6416,"none","unknown/none",59,1,"skilled employee",2
+24,"business","critical",1275,"none","real estate",36,2,"skilled employee",1
+24,"radio/tv","delayed",6403,"none","other",33,1,"skilled employee",1
+24,"radio/tv","repaid",1987,"none","real estate",21,1,"unskilled resident",2
+8,"radio/tv","repaid",760,"guarantor","real estate",44,1,"unskilled resident",1
+24,"car (used)","repaid",2603,"none","other",28,1,"skilled employee",1
+4,"car (new)","critical",3380,"none","real estate",37,1,"skilled employee",1
+36,"domestic appliances","fully repaid this bank",3990,"none","unknown/none",29,1,"unemployed non-resident",1
+24,"car (used)","repaid",11560,"none","other",23,2,"mangement self-employed",2
+18,"car (new)","repaid",4380,"none","other",35,1,"unskilled resident",1
+6,"car (new)","critical",6761,"none","unknown/none",45,2,"mangement self-employed",1
+30,"business","fully repaid",4280,"none","other",26,2,"unskilled resident",2
+24,"car (new)","fully repaid this bank",2325,"none","other",32,1,"skilled employee",1
+10,"radio/tv","fully repaid this bank",1048,"none","real estate",23,1,"unskilled resident",1
+21,"radio/tv","repaid",3160,"none","building society savings",41,1,"skilled employee",1
+24,"furniture","fully repaid this bank",2483,"none","real estate",22,1,"skilled employee",1
+39,"furniture","critical",14179,"none","building society savings",30,2,"mangement self-employed",1
+13,"business","critical",1797,"none","building society savings",28,2,"unskilled resident",1
+15,"car (new)","repaid",2511,"none","other",23,1,"skilled employee",1
+12,"car (new)","repaid",1274,"none","real estate",37,1,"unskilled resident",2
+21,"car (used)","repaid",5248,"none","other",26,1,"skilled employee",1
+15,"car (used)","repaid",3029,"none","other",33,1,"skilled employee",1
+6,"furniture","repaid",428,"none","building society savings",49,1,"skilled employee",1
+18,"car (new)","repaid",976,"none","other",23,1,"unskilled resident",2
+12,"business","repaid",841,"none","real estate",23,1,"unskilled resident",1
+30,"radio/tv","critical",5771,"none","other",25,2,"skilled employee",1
+12,"repairs","delayed",1555,"none","unknown/none",55,2,"skilled employee",2
+24,"car (new)","repaid",1285,"none","unknown/none",32,1,"skilled employee",2
+6,"car (new)","critical",1299,"none","real estate",74,3,"unemployed non-resident",1
+15,"radio/tv","critical",1271,"none","unknown/none",39,2,"skilled employee",2
+24,"car (new)","repaid",1393,"guarantor","real estate",31,1,"skilled employee",1
+12,"car (new)","critical",691,"none","building society savings",35,2,"skilled employee",2
+15,"car (new)","critical",5045,"none","other",59,1,"skilled employee",1
+18,"furniture","critical",2124,"none","real estate",24,2,"skilled employee",2
+12,"radio/tv","repaid",2214,"none","building society savings",24,1,"unskilled resident",1
+21,"car (new)","critical",12680,"none","unknown/none",30,1,"mangement self-employed",2
+24,"car (new)","critical",2463,"none","building society savings",27,2,"skilled employee",1
+12,"radio/tv","repaid",1155,"guarantor","real estate",40,2,"unskilled resident",1
+30,"furniture","repaid",3108,"none","building society savings",31,1,"unskilled resident",2
+10,"car (used)","repaid",2901,"none","real estate",31,1,"skilled employee",1
+12,"furniture","critical",3617,"none","other",28,3,"skilled employee",1
+12,"radio/tv","critical",1655,"none","real estate",63,2,"unskilled resident",1
+24,"car (used)","repaid",2812,"none","real estate",26,1,"skilled employee",1
+36,"education","critical",8065,"none","unknown/none",25,2,"mangement self-employed",2
+21,"car (used)","critical",3275,"none","other",36,1,"mangement self-employed",1
+24,"radio/tv","critical",2223,"none","building society savings",52,2,"skilled employee",1
+12,"car (new)","critical",1480,"none","unknown/none",66,3,"unemployed non-resident",1
+24,"car (new)","repaid",1371,"none","real estate",25,1,"skilled employee",2
+36,"car (new)","critical",3535,"none","other",37,2,"skilled employee",1
+18,"radio/tv","repaid",3509,"guarantor","real estate",25,1,"skilled employee",1
+36,"car (used)","critical",5711,"none","other",38,2,"mangement self-employed",1
+18,"repairs","repaid",3872,"none","other",67,1,"skilled employee",1
+39,"radio/tv","critical",4933,"guarantor","real estate",25,2,"skilled employee",2
+24,"car (new)","critical",1940,"none","real estate",60,1,"skilled employee",1
+12,"retraining","fully repaid",1410,"none","real estate",31,1,"unskilled resident",1
+12,"car (new)","repaid",836,"none","building society savings",23,1,"unskilled resident",2
+20,"car (used)","repaid",6468,"none","real estate",60,1,"mangement self-employed",1
+18,"business","repaid",1941,"none","building society savings",35,1,"unskilled resident",1
+22,"radio/tv","repaid",2675,"none","other",40,1,"skilled employee",1
+48,"car (used)","critical",2751,"none","other",38,2,"skilled employee",1
+48,"education","delayed",6224,"none","unknown/none",50,1,"skilled employee",2
+40,"education","critical",5998,"none","unknown/none",27,1,"skilled employee",2
+21,"business","repaid",1188,"none","building society savings",39,1,"skilled employee",2
+24,"car (used)","repaid",6313,"none","other",41,1,"mangement self-employed",1
+6,"furniture","critical",1221,"none","building society savings",27,2,"skilled employee",1
+24,"furniture","repaid",2892,"none","unknown/none",51,1,"skilled employee",1
+24,"furniture","repaid",3062,"none","unknown/none",32,1,"skilled employee",1
+9,"furniture","repaid",2301,"none","building society savings",22,1,"skilled employee",1
+18,"car (used)","repaid",7511,"none","building society savings",51,1,"skilled employee",2
+12,"furniture","critical",1258,"none","building society savings",22,2,"unskilled resident",1
+24,"car (new)","delayed",717,"none","other",54,2,"skilled employee",1
+9,"car (new)","repaid",1549,"none","real estate",35,1,"unemployed non-resident",1
+24,"education","critical",1597,"none","unknown/none",54,2,"skilled employee",1
+18,"radio/tv","critical",1795,"guarantor","real estate",48,2,"unskilled resident",1
+20,"furniture","critical",4272,"none","building society savings",24,2,"skilled employee",1
+12,"radio/tv","critical",976,"none","other",35,2,"skilled employee",1
+12,"car (new)","repaid",7472,"none","real estate",24,1,"unemployed non-resident",1
+36,"car (new)","repaid",9271,"none","other",24,1,"skilled employee",2
+6,"radio/tv","repaid",590,"none","real estate",26,1,"unskilled resident",1
+12,"radio/tv","critical",930,"none","real estate",65,4,"skilled employee",1
+42,"car (used)","fully repaid this bank",9283,"none","unknown/none",55,1,"mangement self-employed",1
+15,"car (new)","fully repaid",1778,"none","real estate",26,2,"unemployed non-resident",2
+8,"business","repaid",907,"none","real estate",26,1,"skilled employee",1
+6,"radio/tv","repaid",484,"guarantor","real estate",28,1,"unskilled resident",1
+36,"car (used)","critical",9629,"none","other",24,2,"skilled employee",2
+48,"domestic appliances","repaid",3051,"none","other",54,1,"skilled employee",2
+48,"car (new)","repaid",3931,"none","unknown/none",46,1,"skilled employee",2
+36,"car (new)","delayed",7432,"none","building society savings",54,1,"skilled employee",1
+6,"domestic appliances","repaid",1338,"none","real estate",62,1,"skilled employee",1
+6,"radio/tv","critical",1554,"none","other",24,2,"skilled employee",1
+36,"others","repaid",15857,"co-applicant","other",43,1,"mangement self-employed",1
+18,"radio/tv","repaid",1345,"none","real estate",26,1,"skilled employee",2
+12,"car (new)","repaid",1101,"none","real estate",27,2,"skilled employee",1
+12,"radio/tv","repaid",3016,"none","other",24,1,"skilled employee",1
+36,"furniture","repaid",2712,"none","building society savings",41,1,"skilled employee",2
+8,"car (new)","critical",731,"none","real estate",47,2,"unskilled resident",1
+18,"furniture","critical",3780,"none","other",35,2,"mangement self-employed",1
+21,"car (new)","critical",1602,"none","other",30,2,"skilled employee",1
+18,"car (new)","critical",3966,"none","real estate",33,3,"skilled employee",2
+18,"business","fully repaid",4165,"none","other",36,2,"skilled employee",2
+36,"car (used)","repaid",8335,"none","unknown/none",47,1,"skilled employee",2
+48,"business","delayed",6681,"none","unknown/none",38,1,"skilled employee",1
+24,"business","delayed",2375,"none","other",44,2,"skilled employee",1
+18,"car (new)","repaid",1216,"none","other",23,1,"skilled employee",2
+45,"business","fully repaid",11816,"none","other",29,2,"skilled employee",2
+24,"radio/tv","repaid",5084,"none","other",42,1,"skilled employee",1
+15,"radio/tv","repaid",2327,"none","real estate",25,1,"unskilled resident",2
+12,"car (new)","fully repaid",1082,"none","other",48,2,"skilled employee",2
+12,"radio/tv","repaid",886,"none","other",21,1,"skilled employee",1
+4,"furniture","repaid",601,"none","real estate",23,1,"unskilled resident",1
+24,"car (used)","critical",2957,"none","building society savings",63,2,"skilled employee",1
+24,"radio/tv","critical",2611,"co-applicant","real estate",46,2,"skilled employee",1
+36,"furniture","repaid",5179,"none","building society savings",29,1,"skilled employee",2
+21,"car (used)","delayed",2993,"none","real estate",28,2,"unskilled resident",1
+18,"repairs","repaid",1943,"none","real estate",23,1,"skilled employee",2
+24,"business","fully repaid this bank",1559,"none","other",50,1,"skilled employee",1
+18,"furniture","repaid",3422,"none","building society savings",47,3,"skilled employee",1
+21,"furniture","repaid",3976,"none","other",35,1,"skilled employee",1
+18,"car (new)","repaid",6761,"none","other",68,2,"skilled employee",2
+24,"car (new)","repaid",1249,"none","real estate",28,1,"skilled employee",1
+9,"radio/tv","repaid",1364,"none","real estate",59,1,"skilled employee",1
+12,"radio/tv","repaid",709,"none","real estate",57,1,"unskilled resident",2
+20,"car (new)","critical",2235,"guarantor","building society savings",33,2,"skilled employee",2
+24,"car (used)","critical",4042,"none","building society savings",43,2,"skilled employee",1
+15,"radio/tv","critical",1471,"none","unknown/none",35,2,"skilled employee",1
+18,"car (new)","fully repaid this bank",1442,"none","unknown/none",32,2,"unskilled resident",2
+36,"car (new)","delayed",10875,"none","other",45,2,"skilled employee",1
+24,"car (new)","repaid",1474,"none","real estate",33,1,"skilled employee",1
+10,"retraining","repaid",894,"none","building society savings",40,1,"skilled employee",1
+15,"furniture","critical",3343,"none","unknown/none",28,1,"skilled employee",1
+15,"car (new)","repaid",3959,"none","building society savings",29,1,"skilled employee",2
+9,"car (new)","repaid",3577,"guarantor","real estate",26,1,"skilled employee",1
+24,"car (used)","critical",5804,"none","real estate",27,2,"skilled employee",1
+18,"business","delayed",2169,"none","other",28,1,"skilled employee",2
+24,"radio/tv","repaid",2439,"none","real estate",35,1,"skilled employee",2
+27,"furniture","critical",4526,"none","real estate",32,2,"unskilled resident",1
+10,"furniture","repaid",2210,"none","real estate",25,1,"unskilled resident",2
+15,"furniture","repaid",2221,"none","other",20,1,"skilled employee",1
+18,"radio/tv","repaid",2389,"none","other",27,1,"skilled employee",1
+12,"furniture","critical",3331,"none","building society savings",42,1,"skilled employee",1
+36,"business","repaid",7409,"none","building society savings",37,2,"skilled employee",1
+12,"furniture","repaid",652,"none","building society savings",24,1,"skilled employee",1
+36,"furniture","delayed",7678,"none","other",40,2,"skilled employee",1
+6,"car (new)","critical",1343,"none","real estate",46,2,"skilled employee",1
+24,"business","critical",1382,"none","real estate",26,2,"skilled employee",1
+15,"domestic appliances","repaid",874,"none","real estate",24,1,"skilled employee",1
+12,"furniture","repaid",3590,"co-applicant","building society savings",29,1,"unskilled resident",1
+11,"car (new)","critical",1322,"none","other",40,2,"skilled employee",1
+18,"radio/tv","fully repaid this bank",1940,"co-applicant","unknown/none",36,1,"mangement self-employed",1
+36,"radio/tv","repaid",3595,"none","other",28,1,"skilled employee",1
+9,"car (new)","repaid",1422,"none","unknown/none",27,1,"mangement self-employed",2
+30,"radio/tv","critical",6742,"none","building society savings",36,2,"skilled employee",1
+24,"car (used)","repaid",7814,"none","other",38,1,"mangement self-employed",1
+24,"car (used)","repaid",9277,"none","unknown/none",48,1,"skilled employee",1
+30,"car (new)","critical",2181,"none","real estate",36,2,"skilled employee",1
+18,"radio/tv","critical",1098,"none","other",65,2,"unemployed non-resident",1
+24,"furniture","repaid",4057,"none","other",43,1,"skilled employee",2
+12,"education","repaid",795,"none","building society savings",53,1,"skilled employee",2
+24,"business","critical",2825,"none","unknown/none",34,2,"skilled employee",1
+48,"business","repaid",15672,"none","other",23,1,"skilled employee",2
+36,"car (new)","critical",6614,"none","other",34,2,"mangement self-employed",1
+28,"car (used)","fully repaid this bank",7824,"guarantor","real estate",40,2,"skilled employee",1
+27,"business","critical",2442,"none","other",43,4,"mangement self-employed",1
+15,"radio/tv","critical",1829,"none","other",46,2,"skilled employee",1
+12,"car (new)","critical",2171,"none","building society savings",38,2,"unskilled resident",1
+36,"car (used)","critical",5800,"none","other",34,2,"skilled employee",1
+18,"radio/tv","critical",1169,"none","building society savings",29,2,"skilled employee",1
+36,"car (used)","delayed",8947,"none","other",31,1,"mangement self-employed",1
+21,"radio/tv","repaid",2606,"none","building society savings",28,1,"mangement self-employed",1
+12,"furniture","critical",1592,"none","building society savings",35,1,"skilled employee",1
+15,"furniture","repaid",2186,"none","real estate",33,1,"unskilled resident",1
+18,"furniture","repaid",4153,"co-applicant","other",42,1,"skilled employee",2
+16,"car (new)","critical",2625,"guarantor","building society savings",43,1,"skilled employee",2
+20,"car (new)","critical",3485,"none","real estate",44,2,"skilled employee",1
+36,"car (used)","critical",10477,"none","unknown/none",42,2,"skilled employee",1
+15,"radio/tv","repaid",1386,"none","real estate",40,1,"skilled employee",1
+24,"radio/tv","repaid",1278,"none","real estate",36,1,"mangement self-employed",1
+12,"radio/tv","repaid",1107,"none","real estate",20,1,"mangement self-employed",1
+21,"car (new)","repaid",3763,"co-applicant","real estate",24,1,"unskilled resident",1
+36,"education","repaid",3711,"none","other",27,1,"skilled employee",1
+15,"car (used)","delayed",3594,"none","building society savings",46,2,"unskilled resident",1
+9,"car (new)","repaid",3195,"none","real estate",33,1,"unskilled resident",1
+36,"radio/tv","delayed",4454,"none","real estate",34,2,"skilled employee",1
+24,"furniture","critical",4736,"none","other",25,1,"unskilled resident",2
+30,"radio/tv","repaid",2991,"none","other",25,1,"skilled employee",1
+11,"business","repaid",2142,"none","real estate",28,1,"skilled employee",1
+24,"business","fully repaid this bank",3161,"none","building society savings",31,1,"skilled employee",2
+48,"others","fully repaid",18424,"none","building society savings",32,1,"mangement self-employed",2
+10,"car (used)","repaid",2848,"co-applicant","real estate",32,1,"skilled employee",1
+6,"car (new)","repaid",14896,"none","unknown/none",68,1,"mangement self-employed",2
+24,"furniture","repaid",2359,"none","building society savings",33,1,"skilled employee",2
+24,"furniture","repaid",3345,"none","building society savings",39,1,"mangement self-employed",2
+18,"furniture","critical",1817,"none","unknown/none",28,2,"skilled employee",1
+48,"radio/tv","delayed",12749,"none","other",37,1,"mangement self-employed",1
+9,"radio/tv","repaid",1366,"none","building society savings",22,1,"skilled employee",2
+12,"car (new)","repaid",2002,"none","building society savings",30,1,"skilled employee",1
+24,"furniture","fully repaid this bank",6872,"none","building society savings",55,1,"skilled employee",2
+12,"car (new)","fully repaid this bank",697,"none","other",46,2,"skilled employee",2
+18,"furniture","critical",1049,"none","building society savings",21,1,"skilled employee",1
+48,"car (used)","repaid",10297,"none","unknown/none",39,3,"skilled employee",2
+30,"radio/tv","repaid",1867,"none","other",58,1,"skilled employee",1
+12,"car (new)","delayed",1344,"none","real estate",43,2,"unskilled resident",1
+24,"furniture","repaid",1747,"co-applicant","building society savings",24,1,"unskilled resident",1
+9,"radio/tv","repaid",1670,"none","other",22,1,"skilled employee",2
+9,"car (new)","critical",1224,"none","real estate",30,2,"skilled employee",1
+12,"radio/tv","critical",522,"none","building society savings",42,2,"skilled employee",1
+12,"radio/tv","repaid",1498,"none","other",23,1,"skilled employee",1
+30,"radio/tv","delayed",1919,"none","unknown/none",30,2,"mangement self-employed",2
+9,"radio/tv","repaid",745,"none","real estate",28,1,"unskilled resident",2
+6,"radio/tv","repaid",2063,"none","other",30,1,"mangement self-employed",1
+60,"education","repaid",6288,"none","unknown/none",42,1,"skilled employee",2
+24,"car (used)","critical",6842,"none","building society savings",46,2,"mangement self-employed",1
+12,"car (new)","repaid",3527,"none","building society savings",45,1,"mangement self-employed",1
+10,"car (new)","repaid",1546,"none","real estate",31,1,"unskilled resident",1
+24,"furniture","repaid",929,"none","other",31,1,"skilled employee",1
+4,"car (new)","critical",1455,"none","real estate",42,3,"unskilled resident",1
+15,"furniture","repaid",1845,"guarantor","building society savings",46,1,"skilled employee",1
+48,"car (new)","fully repaid",8358,"none","other",30,2,"skilled employee",1
+24,"furniture","fully repaid this bank",3349,"none","unknown/none",30,1,"skilled employee",2
+12,"car (new)","repaid",2859,"none","unknown/none",38,1,"mangement self-employed",1
+18,"furniture","repaid",1533,"co-applicant","building society savings",43,1,"unskilled resident",2
+24,"radio/tv","repaid",3621,"none","other",31,2,"skilled employee",2
+18,"business","critical",3590,"none","other",40,3,"unemployed non-resident",1
+36,"business","delayed",2145,"none","other",24,2,"skilled employee",2
+24,"car (used)","repaid",4113,"none","other",28,1,"skilled employee",2
+36,"furniture","repaid",10974,"none","other",26,2,"mangement self-employed",2
+12,"car (new)","repaid",1893,"guarantor","building society savings",29,1,"skilled employee",1
+24,"radio/tv","critical",1231,"none","building society savings",57,2,"mangement self-employed",1
+30,"radio/tv","critical",3656,"none","building society savings",49,2,"unskilled resident",1
+9,"radio/tv","critical",1154,"none","real estate",37,3,"unskilled resident",1
+28,"car (new)","repaid",4006,"none","other",45,1,"unskilled resident",2
+24,"furniture","repaid",3069,"none","unknown/none",30,1,"skilled employee",1
+6,"radio/tv","critical",1740,"none","real estate",30,2,"skilled employee",1
+21,"car (new)","delayed",2353,"none","building society savings",47,2,"skilled employee",1
+15,"car (new)","repaid",3556,"none","unknown/none",29,1,"skilled employee",1
+24,"radio/tv","repaid",2397,"none","other",35,2,"skilled employee",2
+6,"repairs","repaid",454,"none","building society savings",22,1,"unskilled resident",1
+30,"radio/tv","repaid",1715,"none","other",26,1,"skilled employee",1
+27,"radio/tv","critical",2520,"none","building society savings",23,2,"unskilled resident",2
+15,"radio/tv","repaid",3568,"none","other",54,1,"mangement self-employed",1
+42,"radio/tv","repaid",7166,"none","building society savings",29,1,"skilled employee",1
+11,"car (new)","critical",3939,"none","real estate",40,2,"unskilled resident",1
+15,"repairs","repaid",1514,"guarantor","real estate",22,1,"skilled employee",1
+24,"car (new)","repaid",7393,"none","building society savings",43,1,"unskilled resident",1
+24,"car (new)","fully repaid this bank",1193,"co-applicant","unknown/none",29,2,"unemployed non-resident",2
+60,"business","repaid",7297,"co-applicant","unknown/none",36,1,"skilled employee",2
+30,"radio/tv","critical",2831,"none","other",33,1,"skilled employee",1
+24,"radio/tv","repaid",1258,"none","other",57,1,"unskilled resident",1
+6,"radio/tv","repaid",753,"guarantor","real estate",64,1,"skilled employee",1
+18,"business","delayed",2427,"none","building society savings",42,2,"skilled employee",1
+24,"car (new)","delayed",2538,"none","other",47,2,"unskilled resident",2
+15,"car (new)","fully repaid this bank",1264,"none","building society savings",25,1,"skilled employee",2
+30,"furniture","critical",8386,"none","building society savings",49,1,"skilled employee",2
+48,"business","repaid",4844,"none","other",33,1,"mangement self-employed",2
+21,"car (new)","repaid",2923,"none","other",28,1,"mangement self-employed",1
+36,"car (used)","repaid",8229,"none","building society savings",26,1,"skilled employee",2
+24,"furniture","critical",2028,"none","building society savings",30,2,"unskilled resident",1
+15,"furniture","critical",1433,"none","building society savings",25,2,"skilled employee",1
+42,"business","fully repaid",6289,"none","building society savings",33,2,"skilled employee",1
+13,"radio/tv","repaid",1409,"none","real estate",64,1,"skilled employee",1
+24,"car (used)","repaid",6579,"none","unknown/none",29,1,"mangement self-employed",1
+24,"radio/tv","critical",1743,"none","building society savings",48,2,"unskilled resident",1
+12,"education","critical",3565,"none","building society savings",37,2,"unskilled resident",1
+15,"radio/tv","fully repaid this bank",1569,"none","other",34,1,"unskilled resident",1
+18,"radio/tv","repaid",1936,"none","other",23,2,"unskilled resident",1
+36,"furniture","repaid",3959,"none","building society savings",30,1,"mangement self-employed",1
+12,"car (new)","repaid",2390,"none","other",50,1,"skilled employee",1
+12,"furniture","repaid",1736,"none","real estate",31,1,"unskilled resident",1
+30,"car (used)","repaid",3857,"none","building society savings",40,1,"mangement self-employed",1
+12,"radio/tv","repaid",804,"none","other",38,1,"skilled employee",1
+45,"radio/tv","repaid",1845,"none","unknown/none",23,1,"skilled employee",2
+45,"car (used)","critical",4576,"none","other",27,1,"skilled employee",1
