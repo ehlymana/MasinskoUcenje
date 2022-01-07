@@ -1,0 +1,210 @@
+---
+title: "Laboratorijska Vježba 11. (Pregled naprednih clustering metoda)"
+output:
+  html_document:
+    df_print: paged
+---
+
+## Zadatak 1 (Hijerarhijski clustering)
+
+```{r}
+
+library(stats)
+
+podaci <- read.csv("video_games_sales.csv", fileEncoding = 'UTF-8')
+
+podaci <- subset(podaci, select = -c(Name, Genre, Developer, User_Score, Publisher, Developer, Critic_Score, Platform))
+podaci <- podaci[1:100,]
+
+Rating <- podaci$Rating
+
+podaci <- as.data.frame(scale(podaci))
+
+podaci2 <- subset(podaci, select = -c(Rating))
+```
+
+```{r}
+
+library(factoextra)
+
+model1 <- hclust(dist(podaci2), method = "single")
+fviz_dend(model1)
+
+model2 <- hclust(dist(podaci2), method = "complete")
+fviz_dend(model2)
+
+model3 <- hclust(dist(podaci2), method = "average")
+fviz_dend(model3)
+```
+
+```{r}
+
+library(dendextend)
+
+model1 <- as.dendrogram(model1)
+model1_cut <- color_branches(model1, h = 3)
+fviz_dend(model1_cut)
+
+model2 <- as.dendrogram(model2)
+model2_cut <- color_branches(model2, h = 10)
+fviz_dend(model2_cut)
+
+model3 <- as.dendrogram(model3)
+model3_cut <- color_branches(model3, h = 2.5)
+fviz_dend(model3_cut)
+```
+
+```{r}
+
+library(igraph)
+
+fviz_dend(model1, k = 4, type = "phylogenic", repel = TRUE)
+fviz_dend(model2, k = 2, type = "phylogenic", repel = TRUE)
+fviz_dend(model3, k = 11, type = "phylogenic", repel = TRUE)
+```
+
+```{r}
+
+cop1 <- cophenetic(model1)
+cop2 <- cophenetic(model2)
+cop3 <- cophenetic(model3)
+
+cor1 <- cor(dist(podaci2), cop1)
+cor2 <- cor(dist(podaci2), cop2)
+cor3 <- cor(dist(podaci2), cop3)
+
+cat("Vrijednost cophenetic korelacije za single linkage:", cor1, "\n")
+cat("Vrijednost cophenetic korelacije za complete linkage:", cor2, "\n")
+cat("Vrijednost cophenetic korelacije za average linkage:", cor3)
+```
+
+```{r}
+
+cor12 <- cor_cophenetic(model1, model2)
+cor23 <- cor_cophenetic(model2, model3)
+cor13 <- cor_cophenetic(model1, model3)
+
+cat("Cophenetic koeficijent između modela 1 i 2:", cor12, "\n")
+cat("Cophenetic koeficijent između modela 2 i 3:", cor23, "\n")
+cat("Cophenetic koeficijent između modela 1 i 3:", cor13, "\n")
+
+bak12 <- cor_bakers_gamma(model1, model2)
+bak23 <- cor_bakers_gamma(model2, model3)
+bak13 <- cor_bakers_gamma(model1, model3)
+
+cat("Bakers koeficijent između modela 1 i 2:", bak12, "\n")
+cat("Bakers koeficijent između modela 2 i 3:", bak23, "\n")
+cat("Bakers koeficijent između modela 1 i 3:", bak13)
+```
+
+```{r}
+
+tanglegram(model1, model2,
+           common_subtrees_color_branches = TRUE,
+           main = paste("entanglement =", round(entanglement(dendlist(model1, model2)), 2)))
+
+tanglegram(model2, model3,
+           common_subtrees_color_branches = TRUE,
+           main = paste("entanglement =", round(entanglement(dendlist(model2, model3)), 2)))
+
+tanglegram(model1, model3,
+           common_subtrees_color_branches = TRUE,
+           main = paste("entanglement =", round(entanglement(dendlist(model1, model3)), 2)))
+```
+
+## Zadatak 2 (Metode zasnovane na gustoći)
+
+```{r}
+
+library(fpc)
+
+modelscan <- fpc::dbscan(podaci2, eps = 2, scale = TRUE, MinPts = 5)
+fviz_cluster(modelscan, data = podaci2)
+```
+
+```{r}
+
+library(dbscan)
+
+kNNdistplot(podaci2, k = 5)
+abline(h = 0.15, lty = 2)
+```
+
+```{r}
+
+library(ClusterR)
+
+klasa <- Rating
+klasa[klasa < 5] <- 1
+klasa[klasa > 4] <- 2
+
+val1 <- external_validation(as.numeric(klasa), modelscan$cluster, method = "purity", summary_stats = TRUE)
+```
+
+## Zadatak 3 (Fuzzy clustering)
+
+```{r}
+
+library(cluster)
+
+model1 <- fanny(podaci2, k = 2, stand = TRUE)
+fviz_cluster(model1, ellipse.type = "norm", repel = TRUE)
+
+model2 <- fanny(podaci2, k = 5, stand = TRUE)
+fviz_cluster(model2, ellipse.type = "norm", repel = TRUE)
+
+model3 <- fanny(podaci2, k = 10, stand = TRUE)
+fviz_cluster(model3, ellipse.type = "norm", repel = TRUE)
+```
+
+```{r}
+
+cat("Dunn koeficijent particionisanja za model 1:", model1$coeff[1], "\n")
+cat("Dunn koeficijent particionisanja za model 2:", model2$coeff[1], "\n")
+cat("Dunn koeficijent particionisanja za model 3:", model3$coeff[1], "\n")
+```
+
+```{r}
+
+klasa2 <- Rating
+klasa2[klasa2 < 3] <- 1
+klasa2[klasa2 < 5] <- 2
+klasa2[klasa2 > 4] <- 3
+
+val1 <- external_validation(klasa, model1$clustering, method = "purity")
+val2 <- external_validation(klasa2, model2$clustering, method = "purity")
+val3 <- external_validation(klasa2, model3$clustering, method = "purity")
+
+cat("Čistoća clusteringa za model 1:", val1, "\n")
+cat("Čistoća clusteringa za model 2:", val2, "\n")
+cat("Čistoća clusteringa za model 3:", val3)
+```
+
+## Zadatak 4 (Metode zasnovane na modelu)
+
+```{r}
+
+library(mclust)
+
+model <- Mclust(podaci2)
+fviz_mclust(model, "classification", geom = "point")
+```
+
+```{r}
+
+fviz_mclust(model, "BIC")
+fviz_mclust(model, "uncertainty")
+```
+
+```{r}
+
+klasa3 <- Rating
+klasa3[klasa3 < 3] <- 1
+klasa3[klasa3 < 5] <- 2
+klasa3[klasa3 < 6] <- 3
+klasa3[klasa3 > 5] <- 4
+
+val <- external_validation(as.numeric(podaci$Rating), model$classification, method = "purity")
+
+cat("Čistoća clusteringa:", val, "\n")
+```
