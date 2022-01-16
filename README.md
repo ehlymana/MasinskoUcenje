@@ -14,7 +14,7 @@ Navigacija:
 - branch **lv8** - Upotreba neuralnih mreža za binarnu klasifikaciju
 - branch **lv9** - Višeklasna klasifikacija
 - branch **lv10** - Prototip-bazirane metode clusteringa
-- branch **lv11** - TBA
-- branch **lv12** - TBA
+- branch **lv11** - Pregled naprednih clustering metoda
+- branch **lv12** - Asocijativna pravila
 
 (Ažurirano: ak. 2021./2022. godina)
