@@ -1,0 +1,79 @@
+---
+title: "Laboratorijska Vježba 12. (Asocijativna pravila)"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r}
+
+library(arules)
+
+podaci <- read.transactions('basket.csv', sep = ',', rm.duplicates = TRUE)
+
+itemLabels(podaci)
+
+itemFrequencyPlot(podaci, topN = 10)
+```
+
+```{r}
+
+library(arulesViz)
+
+rules <- apriori(podaci, parameter = list(support = 0.004, confidence = 0.2))
+
+inspect(rules)
+```
+
+```{r}
+
+plot(rules, method = "graph",  engine = "htmlwidget")
+```
+
+```{r}
+
+subrules_support <- head(rules, n = 10, by = "support")
+subrules_confidence <- head(rules, n = 10, by = "confidence")
+subrules_lift <- head(rules, n = 10, by = "lift")
+
+inspect(subrules_support)
+inspect(subrules_confidence)
+inspect(subrules_lift)
+
+plot(subrules_support, method = "graph",  engine = "htmlwidget")
+plot(subrules_confidence, method = "graph",  engine = "htmlwidget")
+plot(subrules_lift, method = "graph",  engine = "htmlwidget")
+```
+
+```{r}
+
+plot(subrules_support, method = "paracoord")
+plot(subrules_confidence, method = "paracoord")
+plot(subrules_lift, method = "paracoord")
+```
+
+```{r}
+
+before_pancakes_rules <- apriori(podaci, parameter = list(support = 0.004, confidence = 0.2), appearance = list(default = "lhs", rhs = "pancakes"))
+```
+
+```{r}
+
+inspect(before_pancakes_rules)
+
+plot(before_pancakes_rules, method = "graph", measure = "confidence", shading = "lift")
+plot(before_pancakes_rules, engine = "plotly")
+```
+
+```{r}
+
+after_cooking_oil_rules <- apriori(podaci, parameter = list(support = 0.004, confidence = 0.2), appearance = list(default = "rhs", lhs = "cooking oil"))
+```
+
+```{r}
+
+inspect(after_cooking_oil_rules)
+
+plot(after_cooking_oil_rules, method = "graph", measure = "confidence", shading = "lift")
+plot(after_cooking_oil_rules, engine = "plotly")
+```
