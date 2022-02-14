@@ -1,0 +1,174 @@
+---
+title: "Dodatak - Korištenje ggplot2 naprednih funkcija za vizualizaciju"
+output:
+  html_document:
+    df_print: paged
+---
+
+**učitavanje dataseta**
+
+```{r}
+
+library(tidyverse)
+
+podaci <- read.csv("admission.csv", fileEncoding = 'UTF-8')
+```
+
+**hist vs. geom_histogram**
+
+```{r}
+
+hist(podaci$toefl_score)
+```
+
+```{r}
+
+plot <- ggplot(podaci, aes(x = toefl_score))
+
+plot + geom_histogram(color = "black", fill = "lightblue")
+```
+
+**density vs. geom_density**
+
+```{r}
+
+not_na <- subset(podaci, is.na(toefl_score) == FALSE)
+
+hist(not_na$toefl_score, prob = TRUE)
+dx <- density(not_na$toefl_score)
+lines(dx, lwd = 2, col = "red")
+```
+
+```{r}
+
+plot <- ggplot(not_na, aes(x = toefl_score))
+
+plot + geom_histogram(aes(y=..density..), color = "black", fill = "lightblue") + geom_density(alpha=.8, fill="#FF6666")
+```
+
+**barplot vs. geom_bar**
+
+```{r}
+
+counts <- table(podaci$uni_rating)
+barplot(counts, xlab = "Uni rating", ylab = "Frequency")
+```
+
+```{r}
+
+counts <- data.frame(counts)
+counts <- setNames(counts, c("uni_rating", "frequency"))
+
+p <- ggplot(counts, aes(x = uni_rating, y = frequency, fill = uni_rating))
+
+p + geom_bar(stat = "identity") + theme_minimal()
+```
+
+**plot vs. geom_point vs. geom_hex vs. geom_density_2d**
+
+```{r}
+
+plot(podaci$gre_score, podaci$toefl_score)
+```
+
+```{r}
+
+plot <- ggplot(podaci, aes(x = gre_score, y = toefl_score))
+
+plot + geom_point(aes(shape = factor(uni_rating), colour = factor(lor)))
+```
+
+```{r}
+
+plot + geom_hex(bins = 20)
+```
+
+```{r}
+
+plot + geom_density_2d_filled()
+```
+
+**boxplot vs. geom_boxplot vs. geom_violin**
+
+```{r}
+
+podaci <- subset(podaci, select = -c(toefl_score, gre_score))
+
+boxplot(podaci$admission_chance, podaci$lor, podaci$sgpa, podaci$sop, podaci$uni_rating, names = c("admission_chance", "lor", "sgpa", "sop", "uni_rating"))
+```
+
+```{r}
+
+df_tidy <- podaci %>%
+
+pivot_longer(cols=admission_chance:uni_rating, values_to = "obs", names_to = "grp")
+
+plot <- ggplot(df_tidy, aes(x = grp, y = obs, fill = grp))
+
+plot + geom_boxplot(outlier.colour = "red", outlier.shape = 1)
+```
+
+```{r}
+
+plot + geom_violin()
+```
+
+**heatmapa - Pearsonov koeficijent**
+
+```{r}
+
+library(reshape2)
+
+get_upper_tri <- function(cormat){
+  cormat[lower.tri(cormat)]<- NA
+  return(cormat)
+}
+
+podaci <- read.csv("admission.csv", fileEncoding = 'UTF-8')
+
+podaci <- na.omit(podaci)
+
+cormat <- round(cor(podaci), 2)
+upper_tri <- get_upper_tri(cormat)
+melted_cormat <- melt(upper_tri, na.rm = TRUE)
+
+ggheatmap <- ggplot(data = melted_cormat, aes(Var2, Var1, fill = value))+
+ geom_tile(color = "white")+
+ scale_fill_gradient2(low = "blue", high = "red", mid = "white", 
+   midpoint = 0, limit = c(-1,1), space = "Lab", 
+   name="Pearson\nCorrelation") +
+  theme_minimal()+ 
+ theme(axis.text.x = element_text(angle = 45, vjust = 1, 
+    size = 12, hjust = 1))+
+ coord_fixed()
+
+ggheatmap
+```
+
+```{r}
+
+ggheatmap <- ggplot(data = melted_cormat, aes(Var2, Var1, fill = value))+
+ geom_tile(color = "white")+
+ scale_fill_gradient2(low = "blue", high = "red", mid = "white", 
+   midpoint = 0.5, limit = c(0,1), space = "Lab", 
+   name="Pearson\nCorrelation") +
+  theme_minimal()+ 
+ theme(axis.text.x = element_text(angle = 45, vjust = 1, 
+    size = 12, hjust = 1))+
+ coord_fixed()
+
+ggheatmap + 
+geom_text(aes(Var2, Var1, label = value), color = "black", size = 4) +
+theme(
+  axis.title.x = element_blank(),
+  axis.title.y = element_blank(),
+  panel.grid.major = element_blank(),
+  panel.border = element_blank(),
+  panel.background = element_blank(),
+  axis.ticks = element_blank(),
+  legend.justification = c(1, 0),
+  legend.position = c(0.6, 0.7),
+  legend.direction = "horizontal")+
+  guides(fill = guide_colorbar(barwidth = 7, barheight = 1,
+                title.position = "top", title.hjust = 0.5))
+```

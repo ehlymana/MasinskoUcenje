@@ -1,0 +1,15 @@
+vrijeme,vlaznost,vjetar,utakmica
+suncano,visoka,slab,ne
+suncano,visoka,jak,ne
+oblacno,visoka,slab,da
+kisa,visoka,slab,da
+kisa,normalna,slab,da
+kisa,normalna,jak,ne
+oblacno,normalna,jak,da
+suncano,visoka,slab,ne
+suncano,normalna,slab,da
+kisa,normalna,slab,da
+suncano,normalna,jak,da
+oblacno,visoka,jak,da
+oblacno,normalna,slab,da
+kisa,visoka,jak,ne

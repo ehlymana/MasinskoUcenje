@@ -1,0 +1,330 @@
+---
+title: "Laboratorijska Vježba 7. (Korištenje SVM za klasifikaciju i regresiju)"
+output:
+  html_document:
+    df_print: paged
+---
+
+## Zadatak 1 - Binarna klasifikacija
+
+```{r}
+
+podaci <- read.csv("elections.csv")
+
+podaci$Office <- factor(podaci$Office)
+podaci$State <- factor(podaci$State)
+podaci$City <- factor(podaci$City)
+podaci$Party <- factor(podaci$Party)
+podaci$Win <- factor(podaci$Win)
+
+rows <- sample(nrow(podaci))
+podaci <- podaci[rows, ]
+
+end <- length(podaci$Win)
+n <- as.integer(0.8 * end)
+podaci_train <- podaci[1 : n, ]
+podaci_test <- podaci[(n + 1) : end, ]
+```
+
+```{r}
+
+library(e1071)
+library(caret)
+
+model <- svm(formula = Win ~ ., data = podaci_train, kernel = "linear")
+
+predictions <- predict(model, newdata = subset(podaci_test, select = -c(Win)))
+
+cm <- confusionMatrix(data = predictions, reference = podaci_test$Win)
+cat("Accuracy:", cm$overall[1])
+```
+
+```{r}
+
+plot(model, podaci, District ~ Spent, xlim = c(0, 1e+07))
+plot(model, podaci, District ~ Spent)
+plot(model, podaci, District ~ Received)
+plot(model, podaci, District ~ Debt)
+plot(model, podaci, District ~ Contribution)
+plot(model, podaci, Spent ~ Received)
+plot(model, podaci, Spent ~ Debt)
+plot(model, podaci, Spent ~ Contribution)
+plot(model, podaci, Received ~ Debt)
+plot(model, podaci, Received ~ Contribution)
+plot(model, podaci, Debt ~ Contribution)
+```
+
+```{r}
+
+library(dplyr)
+
+podaci <- read.csv("elections.csv")
+
+podaci$Office <- factor(podaci$Office)
+podaci$State <- factor(podaci$State)
+podaci$City <- factor(podaci$City)
+podaci$Party <- factor(podaci$Party)
+podaci$Win <- factor(podaci$Win)
+
+max <- max(podaci$Spent)
+j <- 0
+while (10 ** j < max)
+ j = j + 1
+podaci <- mutate(podaci, Spent2 = Spent / 10 ** j)
+
+max <- max(podaci$Received)
+j <- 0
+while (10 ** j < max)
+ j = j + 1
+podaci <- mutate(podaci, Received2 = Received / 10 ** j)
+
+max <- max(podaci$Debt)
+j <- 0
+while (10 ** j < max)
+ j = j + 1
+podaci <- mutate(podaci, Debt2 = Debt / 10 ** j)
+
+max <- max(podaci$Contribution)
+j <- 0
+while (10 ** j < max)
+ j = j + 1
+podaci <- mutate(podaci, Contribution2 = Contribution / 10 ** j)
+
+podaci <- subset(podaci, select = -c(Spent, Received, Debt, Contribution))
+
+rows <- sample(nrow(podaci))
+podaci <- podaci[rows, ]
+
+end <- length(podaci$Win)
+n <- as.integer(0.8 * end)
+podaci_train <- podaci[1 : n, ]
+podaci_test <- podaci[(n + 1) : end, ]
+```
+
+```{r}
+
+model <- svm(formula = Win ~ ., data = podaci_train, kernel = "linear")
+
+predictions <- predict(model, newdata = subset(podaci_test, select = -c(Win)))
+
+cm <- confusionMatrix(data = predictions, reference = podaci_test$Win)
+cat("Accuracy:", cm$overall[1])
+```
+
+```{r}
+
+plot(model, podaci, District ~ Spent2)
+plot(model, podaci, District ~ Spent2, xlim = c(0, 0.03))
+```
+
+```{r}
+
+library(tune)
+
+podaci$Office <- as.numeric(podaci$Office)
+podaci$State <- as.numeric(podaci$State)
+podaci$City <- as.numeric(podaci$City)
+podaci$Party <- as.numeric(podaci$Party)
+podaci$Win <- as.numeric(podaci$Win)
+
+tuning <- tune.svm(formula = Win ~ .,
+                   x = subset(podaci, select = -c(Win)),
+                   y = podaci$Win,
+                   cost = c(1, 5, 10, 25, 50), gamma = c(0.001, 0.01, 0.1, 1))
+
+cat("Najbolja vrijednost cost:", tuning$best.parameters$cost, "\n")
+cat("Najbolja vrijednost gamma:", tuning$best.parameters$gamma, "\n")
+cat("Najveća tačnost:", 1.00 - tuning$best.performance)
+
+plot(tuning)
+```
+
+```{r}
+
+model_linear <- svm(formula = Win ~ ., data = podaci_train, kernel = "linear", cost = 25, gamma = 0.1)
+model_polynomial <- svm(formula = Win ~ ., data = podaci_train, kernel = "polynomial", cost = 25, gamma = 0.1)
+model_radial <- svm(formula = Win ~ ., data = podaci_train, kernel = "radial", cost = 25, gamma = 0.1)
+model_sigmoid <- svm(formula = Win ~ ., data = podaci_train, kernel = "sigmoid", cost = 25, gamma = 0.1)
+
+predictions_linear <- predict(model_linear, newdata = subset(podaci_test, select = -c(Win)))
+predictions_polynomial <- predict(model_polynomial, newdata = subset(podaci_test, select = -c(Win)))
+predictions_radial <- predict(model_radial, newdata = subset(podaci_test, select = -c(Win)))
+predictions_sigmoid <- predict(model_sigmoid, newdata = subset(podaci_test, select = -c(Win)))
+
+cm_linear <- confusionMatrix(data = predictions_linear, reference = podaci_test$Win)
+cm_polynomial <- confusionMatrix(data = predictions_polynomial, reference = podaci_test$Win)
+cm_radial <- confusionMatrix(data = predictions_radial, reference = podaci_test$Win)
+cm_sigmoid <- confusionMatrix(data = predictions_sigmoid, reference = podaci_test$Win)
+
+cat("Accuracy - linear kernal:", cm_linear$overall[1], "\n")
+cat("Accuracy - polynomial kernel:", cm_polynomial$overall[1], "\n")
+cat("Accuracy - radial kernel:", cm_radial$overall[1], "\n")
+cat("Accuracy - sigmoid kernel:", cm_sigmoid$overall[1], "\n")
+```
+
+```{r}
+
+library(kernlab)
+
+ksvm <- ksvm(Win ~ District + Spent2, data = podaci_train, type = "C-svc", kernel = "vanilladot")
+plot(ksvm, data = podaci_train, main = "Linearna kernel funkcija")
+
+ksvm <- ksvm(Win ~ District + Spent2, data = podaci_train, type = "C-svc", kernel = "polydot")
+plot(ksvm, data = podaci_train, main = "Polinomijalna kernel funkcija")
+
+ksvm <- ksvm(Win ~ District + Spent2, data = podaci_train, type = "C-svc", kernel = "rbfdot")
+plot(ksvm, data = podaci_train, main = "Radijalna kernel funkcija")
+
+ksvm <- ksvm(Win ~ District + Spent2, data = podaci_train, type = "C-svc", kernel = "tanhdot")
+plot(ksvm, data = podaci_train, main = "Tanh kernel funkcija")
+
+ksvm <- ksvm(Win ~ District + Spent2, data = podaci_train, type = "C-svc", kernel = "laplacedot")
+plot(ksvm, data = podaci_train, main = "Laplace kernel funkcija")
+
+ksvm <- ksvm(Win ~ District + Spent2, data = podaci_train, type = "C-svc", kernel = "besseldot")
+plot(ksvm, data = podaci_train, main = "Besseldot kernel funkcija")
+
+ksvm <- ksvm(Win ~ District + Spent2, data = podaci_train, type = "C-svc", kernel = "anovadot")
+plot(ksvm, data = podaci_train, main = "Anovadot kernel funkcija")
+
+ksvm <- ksvm(Win ~ District + Spent2, data = podaci_train, type = "C-svc", kernel = "splinedot")
+plot(ksvm, data = podaci_train, main = "Spline kernel funkcija")
+```
+
+## Zadatak 2 - Logistička regresija
+
+```{r}
+
+podaci <- read.csv("elections.csv")
+
+podaci$Office <- factor(podaci$Office)
+podaci$State <- as.numeric(factor(podaci$State))
+podaci$City <- as.numeric(factor(podaci$City))
+podaci$Party <- as.numeric(factor(podaci$Party))
+podaci$Win <- factor(podaci$Win)
+
+rows <- sample(nrow(podaci))
+podaci <- podaci[rows, ]
+
+end <- length(podaci$Win)
+n <- as.integer(0.8 * end)
+podaci_train <- podaci[1 : n, ]
+podaci_test <- podaci[(n + 1) : end, ]
+```
+
+```{r}
+
+model <- glm(formula = Win ~ ., data = podaci_train, family = binomial(link = "logit"))
+
+predictions <- predict(model, newdata = subset(podaci_test, select = -c(Win)), type= "response")
+predictions[predictions > 0.5] <- "Yes"
+predictions[predictions <= 0.5] <- "No"
+predictions <- factor(predictions, levels = c("No", "Yes"))
+
+cm <- confusionMatrix(data = predictions, reference = podaci_test$Win)
+cat("Accuracy:", cm$overall[1])
+```
+
+## Zadatak 3 - Linearna regresija
+
+```{r}
+
+podaci <- read.csv("elections.csv")
+
+podaci$Office <- factor(podaci$Office)
+podaci$State <- factor(podaci$State)
+podaci$City <- factor(podaci$City)
+podaci$Party <- factor(podaci$Party)
+podaci$Win <- factor(podaci$Win)
+
+rows <- sample(nrow(podaci))
+podaci <- podaci[rows, ]
+
+end <- length(podaci$Win)
+n <- as.integer(0.8 * end)
+podaci_train <- podaci[1 : n, ]
+podaci_test <- podaci[(n + 1) : end, ]
+```
+
+```{r}
+
+plot(podaci_test$Spent, podaci_test$District)
+model <- svm(formula = Spent ~ ., data = podaci_train)
+
+predictions <- predict(model, newdata = subset(podaci_test, select = -c(Spent)))
+
+points(predictions, podaci_test$District, col = "red", pch = 16)
+```
+
+```{r}
+
+library(Metrics)
+
+RMSE <- rmse(podaci_test$Spent, predictions)
+cat("RMSE:", RMSE)
+```
+
+```{r}
+
+podaci <- read.csv("elections.csv")
+
+podaci$Office <- factor(podaci$Office)
+podaci$State <- factor(podaci$State)
+podaci$City <- factor(podaci$City)
+podaci$Party <- factor(podaci$Party)
+podaci$Win <- factor(podaci$Win)
+
+max <- max(podaci$Spent)
+min <- min(podaci$Spent)
+podaci <- mutate(podaci, Spent2 = (Spent - min) / (max -
+min))
+podaci <- subset(podaci, select = -c(Spent))
+
+rows <- sample(nrow(podaci))
+podaci <- podaci[rows, ]
+
+end <- length(podaci$Win)
+n <- as.integer(0.8 * end)
+podaci_train <- podaci[1 : n, ]
+podaci_test <- podaci[(n + 1) : end, ]
+
+plot(podaci_test$Spent2, podaci_test$District, xlim = c(0, 0.05))
+model <- svm(formula = Spent2 ~ ., data = podaci_train)
+
+predictions <- predict(model, newdata = subset(podaci_test, select = -c(Spent2)))
+
+points(predictions, podaci_test$District, col = "red", pch = 16)
+
+RMSE <- rmse(podaci_test$Spent, predictions)
+cat("RMSE:", RMSE)
+```
+
+```{r}
+
+podaci$Office <- as.numeric(podaci$Office)
+podaci$State <- as.numeric(podaci$State)
+podaci$City <- as.numeric(podaci$City)
+podaci$Party <- as.numeric(podaci$Party)
+podaci$Win <- as.numeric(podaci$Win)
+
+tuning <- tune.svm(formula = Spent2 ~ .,
+                   x = subset(podaci, select = -c(Spent2)),
+                   y = podaci$Spent2,
+                   cost = c(5, 10, 25, 50), gamma = c(0.001, 0.01, 0.1, 1))
+
+cat("Najbolja vrijednost cost:", tuning$best.parameters$cost, "\n")
+cat("Najbolja vrijednost gamma:", tuning$best.parameters$gamma, "\n")
+cat("Najmanja RMSE:", tuning$best.performance)
+
+plot(tuning)
+```
+
+```{r}
+
+best <- svm(formula = Spent2 ~ ., data = podaci_train, cost = 50, gamma = 0.001)
+predictions_best <- predict(best, newdata = subset(podaci_test, select = -c(Spent2)))
+
+plot(podaci_test$Spent2, podaci_test$District, pch = 16, xlim = c(0, 0.05))
+points(predictions, podaci_test$District, col = "red", pch = 3)
+points(predictions_best, podaci_test$District, col = "blue", pch = 4)
+```

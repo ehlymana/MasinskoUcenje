@@ -1,0 +1,62 @@
+---
+title: "Laboratorijska Vježba 1. (Osnove programskog jezika R)"
+output:
+  html_document:
+    df_print: paged
+---
+
+## **Zadatak 1**
+
+Neka je dat vektor cijelih brojeva. Potrebno je izračunati i ispisati sumu za sve parne i sumu za sve neparne brojeve, kao i da li vektor sadrži samo proste brojeve.
+
+```{r}
+
+prost <- function(broj)
+{
+  i <- 2
+  while (i < broj)
+  {
+    if (broj %% i == 0)
+      return (FALSE)
+    
+    i <- i + 1
+  }
+  
+  return (TRUE)
+}
+
+vektor <- c(-2, 5, 17, 8, 4, 13)
+
+cat("Vektor: ", vektor, "\n")
+
+suma_parni <- 0
+suma_neparni <- 0
+prosti <- TRUE
+
+for (broj in vektor)
+{
+  # naredba za omogućavanje breakpointa
+  # browser()
+  if (prost(broj) == FALSE)
+    prosti <- FALSE
+  
+  if (broj %% 2 == 0)
+  {
+    suma_parni <- suma_parni + broj
+  }  else
+  {
+    suma_neparni <- suma_neparni + broj
+  }
+}
+
+cat("Suma svih parnih brojeva: ", suma_parni, "\n")
+cat("Suma svih neparnih brojeva: ", suma_neparni, "\n")
+
+if (prosti == TRUE) 
+{
+  cat("Svi brojevi u vektoru su prosti")
+} else
+{
+  cat("Vektor sadrži složene brojeve")
+}
+```

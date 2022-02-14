@@ -1,0 +1,139 @@
+---
+title: "Laboratorijska Vježba 7. (Korištenje SVM za klasifikaciju i regresiju)"
+output:
+  html_document:
+    df_print: paged
+---
+
+## 1. Analiza linearnosti rezidualnih vrijednosti
+
+```{r}
+
+library(e1071)
+
+podaci <- read.csv("elections.csv")
+
+podaci$Office <- factor(podaci$Office)
+podaci$State <- factor(podaci$State)
+podaci$City <- factor(podaci$City)
+podaci$Party <- factor(podaci$Party)
+podaci$Win <- factor(podaci$Win)
+
+podaci <- subset(podaci, Spent < 1e+07)
+
+rows <- sample(nrow(podaci))
+podaci <- podaci[rows, ]
+
+end <- length(podaci$Win)
+n <- as.integer(0.8 * end)
+podaci_train <- podaci[1 : n, ]
+podaci_test <- podaci[(n + 1) : end, ]
+
+model <- svm(formula = Spent ~ ., data = podaci_train, cost = 50, gamma = 0.001)
+```
+
+```{r}
+
+library(stats)
+
+cat(median(residuals(model)))
+
+plot(podaci_train$Spent, residuals(model))
+lines(smooth.spline(podaci_train$Spent, residuals(model)), col = "red")
+```
+
+## 2. Kolinearnost ulaznih varijabli
+
+```{r}
+
+library(caret)
+
+predictions <- predict(model, newdata = subset(podaci_test, select = -c(Spent)))
+r2 = R2(podaci_test$Spent, predictions, form = "traditional")
+
+VIF = 1 / (1 - r2)
+
+cat("VIF:", VIF)
+```
+
+## 3. Auto-korelacija rezidualnih vrijednosti
+
+```{r}
+
+shapirowilk <- shapiro.test(model$residuals)
+
+cat("Rezultat Shapiro-Wilks testa:", shapirowilk$statistic, "\n")
+cat("P-vrijednost:", shapirowilk$p.value, "\n")
+```
+
+```{r}
+
+plot(density(model$residuals), main = "Residuals", xlab = "Value")
+plot(model, which = 2)
+```
+
+```{r}
+
+library(car)
+
+cat("Rezultat Durbin-Watsonovog testa:", durbinWatsonTest(model$residuals), "\n")
+```
+
+## 4. Konstantnost varijanse rezidualnih vrijednosti
+
+```{r}
+
+plot(fitted(model), resid(model), col = ifelse(resid(model) < 0,'blue','green'), pch = 19) 
+abline(0, 0)
+lines(smooth.spline(fitted(model), resid(model)), col = "red")
+```
+
+## 5. Detekcija outlier izlaznih vrijednosti
+
+```{r}
+
+library(MLmetrics)
+
+H <- hat(model$residuals)
+predictions <- predict(model, data = podaci_train)
+train_MSE <- mean((podaci_train$Spent - predictions)^2)
+variance <- model$residuals / sqrt(train_MSE * (1 - H))
+index <- as.numeric(unname(which(abs(variance) > 3)))
+
+y_not_outliers <- resid(model)[c(-index)]
+y_outliers <- resid(model)[c(index)]
+x_not_outliers <- fitted(model)[c(-index)]
+x_outliers <- fitted(model)[c(index)]
+
+x_min <- ifelse(min(x_not_outliers) < min(x_outliers), min(x_not_outliers), min(x_outliers))
+x_max <- ifelse(max(x_not_outliers) > max(x_outliers), max(x_not_outliers), max(x_outliers))
+y_min <- ifelse(min(y_not_outliers) < min(y_outliers), min(y_not_outliers), min(y_outliers))
+y_max <- ifelse(max(y_not_outliers) > max(y_outliers), max(y_not_outliers), max(y_outliers))
+
+plot(x_not_outliers, y_not_outliers, col = 'blue', pch = 19, xlim = c(x_min, x_max), ylim = c(y_min, y_max))
+points(x_outliers, y_outliers, col = 'red', pch = 19)
+```
+
+## 6. Detekcija nepodobnih ulaznih vrijednosti (high leverage points)
+
+```{r}
+
+p <- length(podaci_train)
+n <- length(podaci_train$Spent)
+critical <- (p + 1) / n
+H <- hat(model$residuals)
+index <- which(H > critical)
+
+y_not_outliers <- podaci_train$Received[c(-index)]
+y_outliers <- podaci_train$Received[c(index)]
+x_not_outliers <- podaci_train$Spent[c(-index)]
+x_outliers <- podaci_train$Spent[c(index)]
+
+x_min <- ifelse(min(x_not_outliers) < min(x_outliers), min(x_not_outliers), min(x_outliers))
+x_max <- ifelse(max(x_not_outliers) > max(x_outliers), max(x_not_outliers), max(x_outliers))
+y_min <- ifelse(min(y_not_outliers) < min(y_outliers), min(y_not_outliers), min(y_outliers))
+y_max <- ifelse(max(y_not_outliers) > max(y_outliers), max(y_not_outliers), max(y_outliers))
+
+plot(x_not_outliers, y_not_outliers, col = 'blue', pch = 19, xlim = c(x_min, x_max), ylim = c(y_min, y_max))
+points(x_outliers, y_outliers, col = 'red', pch = 19)
+```

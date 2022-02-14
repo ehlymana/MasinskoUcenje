@@ -1,0 +1,246 @@
+---
+title: "Laboratorijska vježba 4 (Klasifikacija koristeći drvo odlučivanja)"
+output:
+  html_document:
+    df_print: paged
+---
+
+## Zadatak 1
+
+```{r}
+
+podaci <- read.csv("vrijeme.csv")
+podaci$vrijeme <- factor(podaci$vrijeme)
+podaci$vlaznost <- factor(podaci$vlaznost)
+podaci$vjetar <- factor(podaci$vjetar)
+podaci$utakmica <- factor(podaci$utakmica)
+
+end <- length(podaci$vrijeme)
+n <- as.integer(0.6 * end)
+podaci_train <- podaci[1 : n, ]
+podaci_test <- podaci[(n + 1) : end, ]
+```
+
+```{r}
+
+library(rpart)
+
+tree <- rpart(formula = utakmica ~ .,
+              method = "class",
+              data = podaci_train,
+              control = rpart.control("minsplit" = 1))
+```
+
+```{r}
+
+library(rpart.plot)
+
+tree
+rpart.plot(tree)
+```
+
+```{r}
+
+prediction <- predict(tree, newdata = subset(podaci_test, select = -c(utakmica)))
+
+prediction
+
+for (i in 1 : nrow(prediction))
+{
+  predviđena <- "ne"
+  if (prediction[i][1] == 1)
+    predviđena <- "da"
+  stvarna <- levels(podaci_test$utakmica)[podaci_test$utakmica[i]]
+  cat("Predviđena vrijednost:", predviđena, "Stvarna vrijednost:", stvarna, "\n")
+}
+```
+
+```{r}
+
+library(caret)
+
+prediction <- prediction[, 1]
+prediction[prediction == 0] <- "ne"
+prediction[prediction == 1] <- "da"
+prediction <- factor(prediction)
+
+cm <- confusionMatrix(data = prediction, reference = podaci_test$utakmica)
+cm
+```
+
+```{r}
+
+tree_gain <- rpart(formula = utakmica ~ .,
+              method = "class",
+              data = podaci_train,
+              control = rpart.control("minsplit" = 1),
+              parms = list(split = "information"))
+
+rpart.plot(tree)
+```
+
+```{r}
+
+prediction <- predict(tree_gain, newdata = subset(podaci_test, select = -c(utakmica)))
+
+prediction <- prediction[, 1]
+prediction[prediction == 0] <- "ne"
+prediction[prediction == 1] <- "da"
+prediction <- factor(prediction)
+
+cm <- confusionMatrix(data = prediction, reference = podaci_test$utakmica)
+cm
+```
+
+## Zadatak 2
+
+```{r}
+
+plotcp(tree)
+```
+
+```{r}
+
+pruned_tree <- prune(tree, cp = 0.31)
+
+rpart.plot(pruned_tree)
+```
+
+```{r}
+
+draw_confusion_matrix <- function(cm)
+{
+  columns <- colnames(cm$table)
+  rows <- rownames(cm$table)
+  layout(matrix(c(1,1,2)))
+  par(mar=c(2,2,2,2))
+  plot(c(100, 345), c(300, 450), type = "n", xlab="", ylab="", xaxt='n', yaxt='n')
+  title('CONFUSION MATRIX', cex.main=2)
+
+  rect(150, 430, 240, 370, col='#3F97D0')
+  text(195, 435, columns[1], cex=1.2)
+  rect(250, 430, 340, 370, col='#F7AD50')
+  text(295, 435, columns[2], cex=1.2)
+  text(125, 370, 'Predicted', cex=1.3, srt=90, font=2)
+  text(245, 450, 'Actual', cex=1.3, font=2)
+  rect(150, 305, 240, 365, col='#F7AD50')
+  rect(250, 305, 340, 365, col='#3F97D0')
+  text(140, 400, rows[1], cex=1.2, srt=90)
+  text(140, 335, rows[2], cex=1.2, srt=90)
+
+  res <- as.numeric(cm$table)
+  text(195, 400, res[1], cex=1.6, font=2, col='white')
+  text(195, 335, res[2], cex=1.6, font=2, col='white')
+  text(295, 400, res[3], cex=1.6, font=2, col='white')
+  text(295, 335, res[4], cex=1.6, font=2, col='white')
+
+  plot(c(100, 0), c(100, 0), type = "n", xlab="", ylab="", main = "DETAILS", xaxt='n', yaxt='n')
+  text(10, 85, names(cm$byClass[1]), cex=1.2, font=2)
+  text(10, 70, round(as.numeric(cm$byClass[1]), 3), cex=1.2)
+  text(30, 85, names(cm$byClass[2]), cex=1.2, font=2)
+  text(30, 70, round(as.numeric(cm$byClass[2]), 3), cex=1.2)
+  text(50, 85, names(cm$byClass[5]), cex=1.2, font=2)
+  text(50, 70, round(as.numeric(cm$byClass[5]), 3), cex=1.2)
+  text(70, 85, names(cm$byClass[6]), cex=1.2, font=2)
+  text(70, 70, round(as.numeric(cm$byClass[6]), 3), cex=1.2)
+  text(90, 85, names(cm$byClass[7]), cex=1.2, font=2)
+  text(90, 70, round(as.numeric(cm$byClass[7]), 3), cex=1.2)
+  text(30, 35, names(cm$overall[1]), cex=1.5, font=2)
+  text(30, 20, round(as.numeric(cm$overall[1]), 3), cex=1.4)
+  text(70, 35, names(cm$overall[2]), cex=1.5, font=2)
+  text(70, 20, round(as.numeric(cm$overall[2]), 3), cex=1.4)
+}
+```
+
+```{r}
+
+prediction <- predict(pruned_tree, newdata = subset(podaci_test, select = -c(utakmica)))
+
+prediction <- prediction[, 1]
+prediction[prediction < 0.5] <- "ne"
+prediction[prediction > 0.5] <- "da"
+prediction <- factor(prediction)
+
+cm <- confusionMatrix(data = prediction, reference = podaci_test$utakmica)
+draw_confusion_matrix(cm)
+```
+
+```{r}
+
+library(RWeka)
+
+model <- OneR(podaci_train)
+summary(model)
+```
+
+## Zadatak 3
+
+```{r}
+
+library(OneR)
+
+model <- OneR(podaci_train)
+summary(model)
+```
+
+```{r}
+
+plot(model)
+```
+
+```{r}
+
+metrike_oner <- function(model, podaci)
+{
+  feature <- model$feature
+  target <- model$target
+  rules <- model$rules
+  coverage <- 0
+  
+  for (i in 1 : length(rules))
+  {
+    pravilo <- names(rules[i])
+    rezultat <- unlist(rules[i])
+    subset <- podaci[podaci[[feature]] == pravilo, ]
+    coverage <- nrow(subset) / nrow(podaci)
+    correct <- subset[subset[[target]] == rezultat, ]
+    accuracy <- nrow(correct) / nrow(subset)
+    cat("Pravilo: IF", pravilo, "THEN", rezultat, ", pokrivenost:", coverage, ", tačnost:", accuracy, "\n") 
+  }
+}
+
+metrike_oner(model, podaci_train)
+```
+
+```{r}
+
+prediction <- predict(model, podaci_test)
+cm <- confusionMatrix(data = prediction, reference = podaci_test$utakmica)
+
+fourfoldplot(cm$table, color = c("#99CC99", "#CC6666"),
+             conf.level = 0, margin = 1, main = "Confusion Matrix")
+```
+
+## Zadatak 4
+
+```{r}
+
+library(rJava)
+library(RWeka)
+
+model <- JRip(formula = utakmica ~ ., data = podaci_train)
+summary(model)
+model
+```
+
+```{r}
+
+library(pROC)
+
+prediction <- predict(model, podaci_test, type = "prob")
+roc <- roc(podaci_test$utakmica, prediction[, 2], percent = TRUE)
+
+plot(roc$specificities, roc$sensitivities, type="l", lwd = 2, col = "blue", xlim = c(100, 0), ylim = c(0, 100))
+abline(coef = c(100, -1), col = "gray60")
+
+```

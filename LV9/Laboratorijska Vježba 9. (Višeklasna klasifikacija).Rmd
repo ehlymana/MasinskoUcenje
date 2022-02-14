@@ -1,0 +1,166 @@
+---
+title: "Laboratorijska Vježba 9. (Višeklasna klasifikacija)"
+output:
+  html_document:
+    df_print: paged
+---
+
+## Zadatak 1
+
+```{r}
+
+library(UBL)
+
+podaci <- read.csv("iris.csv", fileEncoding = 'UTF-8')
+podaci$Species <- factor(podaci$Species)
+table(podaci$Species)
+
+newdata <- RandOverClassif(Species ~ ., podaci, list("Iris-setosa" = 1, "Iris-versicolor" = 1.1, "Iris-virginica" = 1))
+table(newdata$Species)
+
+par(mfrow = c(1, 2))
+
+plot(podaci$SepalWidthCm, podaci$SepalLengthCm, col = as.integer(podaci[, 5]), main = "Original Data", xlim = range(newdata$SepalWidthCm), ylim = range(newdata$SepalLengthCm))
+
+plot(newdata$SepalWidthCm, newdata$SepalLengthCm, col = as.integer(newdata[, 5]), main = "New Data", xlim = range(newdata$SepalWidthCm), ylim = range(newdata$SepalLengthCm))
+
+rows <- sample(nrow(newdata))
+podaci <- newdata[rows, ]
+
+end <- length(podaci$Species)
+n <- as.integer(0.4 * end)
+podaci_train <- podaci[1 : n, ]
+podaci_test <- podaci[(n + 1) : end, ]
+```
+
+```{r}
+
+library(regtools)
+library(caret)
+
+train_matrica <- data.matrix(podaci_train)
+train_matrica[, 5] = train_matrica[, 5] - 1
+model <- ovalogtrn(3, train_matrica)
+
+test_matrica <- data.matrix(podaci_test[, 1:4])
+prediction <- ovalogpred(model, test_matrica)
+
+prediction[prediction == 0] <- "Iris-setosa"
+prediction[prediction == 1] <- "Iris-versicolor"
+prediction[prediction == 2] <- "Iris-virginica"
+prediction_factor <- factor(prediction)
+
+cm <- confusionMatrix(prediction_factor, podaci_test$Species)
+cat("Accuracy:", cm$overall[1])
+```
+
+```{r}
+
+plot(podaci_test$PetalWidthCm, podaci_test$PetalLengthCm, col=c("red","blue","green")[podaci_test$Species])
+
+plot(podaci_test$PetalWidthCm, podaci_test$PetalLengthCm, col=c("red","blue","green")[prediction_factor])
+```
+
+```{r}
+
+library(pROC)
+
+roc <- multiclass.roc(as.numeric(podaci_test$Species), as.numeric(prediction_factor), direction="<")
+
+plot(roc[['rocs']][[1]], col="yellow", lwd =4)
+lines(roc[['rocs']][[2]], col="blue", lwd = 2)
+lines(roc[['rocs']][[3]], col="green", lwd = 1)
+```
+
+```{r}
+
+model <- avalogtrn(3, train_matrica)
+
+prediction <- avalogpred(3, model, test_matrica)
+
+prediction[prediction == 0] <- "Iris-setosa"
+prediction[prediction == 1] <- "Iris-versicolor"
+prediction[prediction == 2] <- "Iris-virginica"
+prediction_factor <- factor(prediction)
+
+cm <- confusionMatrix(prediction_factor, podaci_test$Species)
+cat("Accuracy:", cm$overall[1])
+```
+
+```{r}
+
+plot(podaci_test$PetalWidthCm, podaci_test$PetalLengthCm, col=c("red","blue","green")[podaci_test$Species])
+
+plot(podaci_test$PetalWidthCm, podaci_test$PetalLengthCm, col=c("red","blue","green")[prediction_factor])
+```
+
+```{r}
+
+library(pROC)
+
+roc <- multiclass.roc(as.numeric(podaci_test$Species), as.numeric(prediction_factor), direction="<")
+
+plot(roc[['rocs']][[1]], col="yellow", lwd = 4)
+lines(roc[['rocs']][[2]], col="blue", lwd = 2)
+lines(roc[['rocs']][[3]], col="green", lwd = 1)
+```
+
+## Zadatak 2 (SVM)
+
+```{r}
+
+library(e1071)
+
+model <- svm(formula = Species ~ ., data = podaci_train, kernel = "linear")
+
+predictions <- predict(model, newdata = subset(podaci_test, select = -c(Species)))
+
+cm <- confusionMatrix(data = predictions, reference = podaci_test$Species)
+cat("Accuracy:", cm$overall[1])
+```
+
+```{r}
+
+plot(model, podaci_test, PetalLengthCm ~ PetalWidthCm)
+```
+
+```{r}
+
+library(RColorBrewer)
+library(kernlab)
+
+svm_area <- function(podaci_train, podaci_test)
+{
+  kernfit <- ksvm(as.matrix(podaci_train[, 3:4]), podaci_train$Species, type = "C-svc", kernel = 'vanilladot')
+
+cols <- brewer.pal(3, "Set1")
+
+x.1 <- seq(from = min(podaci_test$PetalLengthCm), to = max(podaci_test$PetalLengthCm), length = 30)
+x.2 <- seq(from = min(podaci_test$PetalWidthCm), to = max(podaci_test$PetalWidthCm), length = 30)
+x.grid <- expand.grid(x.2, x.1)
+
+pred <- predict(kernfit, newdata = x.grid)
+classes <- matrix(pred, nrow = 30, ncol = 30)
+
+plot(x.grid, pch = 19, col = adjustcolor(cols[pred], alpha.f = 1.0))
+points(podaci_test[, 3:4], pch = 19, col = cols[pred])
+
+kernfit <- ksvm(as.matrix(podaci_test[, 3:4]), podaci_test$Species, type = "C-svc", kernel = 'vanilladot')
+}
+
+svm_area(podaci_train, podaci_train)
+svm_area(podaci_train, podaci_test)
+svm_area(podaci_test, podaci_test)
+```
+
+```{r}
+
+model <- svm(formula = Species ~ ., data = podaci_train, kernel = "linear", class.weights = c("Iris-setosa" = 1, "Iris-versicolor" = 0.45, "Iris-virginica" = 1.8))
+
+predictions <- predict(model, newdata = subset(podaci_test, select = -c(Species)))
+
+cm <- confusionMatrix(data = predictions, reference = podaci_test$Species)
+cat("Accuracy:", cm$overall[1])
+
+plot(model, podaci_test, PetalLengthCm ~ PetalWidthCm)
+```

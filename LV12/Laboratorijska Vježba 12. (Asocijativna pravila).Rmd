@@ -1,0 +1,198 @@
+---
+title: "Laboratorijska Vježba 12. (Asocijativna pravila)"
+output:
+  html_document:
+    df_print: paged
+---
+
+## Zadatak 1 (Apriori)
+
+```{r}
+
+library(arules)
+
+podaci <- read.transactions('basket.csv', sep = ',', rm.duplicates = TRUE)
+
+itemLabels(podaci)
+
+itemFrequencyPlot(podaci, topN = 10)
+```
+
+```{r}
+
+library(arulesViz)
+
+rules <- apriori(podaci, parameter = list(support = 0.004, confidence = 0.2))
+
+inspect(rules)
+```
+
+```{r}
+
+plot(rules, method = "graph",  engine = "htmlwidget")
+```
+
+```{r}
+
+subrules_support <- head(rules, n = 10, by = "support")
+subrules_confidence <- head(rules, n = 10, by = "confidence")
+subrules_lift <- head(rules, n = 10, by = "lift")
+
+inspect(subrules_support)
+inspect(subrules_confidence)
+inspect(subrules_lift)
+
+plot(subrules_support, method = "graph",  engine = "htmlwidget")
+plot(subrules_confidence, method = "graph",  engine = "htmlwidget")
+plot(subrules_lift, method = "graph",  engine = "htmlwidget")
+```
+
+```{r}
+
+plot(subrules_support, method = "paracoord")
+plot(subrules_confidence, method = "paracoord")
+plot(subrules_lift, method = "paracoord")
+```
+
+```{r}
+
+before_pancakes_rules <- apriori(podaci, parameter = list(support = 0.004, confidence = 0.2), appearance = list(default = "lhs", rhs = "pancakes"))
+```
+
+```{r}
+
+inspect(before_pancakes_rules)
+
+plot(before_pancakes_rules, method = "graph", measure = "confidence", shading = "lift")
+plot(before_pancakes_rules, engine = "plotly")
+```
+
+```{r}
+
+after_cooking_oil_rules <- apriori(podaci, parameter = list(support = 0.004, confidence = 0.2), appearance = list(default = "rhs", lhs = "cooking oil"))
+```
+
+```{r}
+
+inspect(after_cooking_oil_rules)
+
+plot(after_cooking_oil_rules, method = "graph", measure = "confidence", shading = "lift")
+plot(after_cooking_oil_rules, engine = "plotly")
+```
+
+## Zadatak 2 (FP-Growth)
+
+```{r}
+
+library(sparklyr)
+
+spark_install("3.2")
+
+sc <- spark_connect(master = "local")
+```
+
+```{r}
+
+library(dplyr)
+
+podaci <- read.csv("basket2.csv", header = FALSE, sep = ";")
+
+data <- copy_to(sc, tibble(items=podaci$V1)) %>%
+  mutate(items = split(items, "\\\\s+"))
+```
+
+```{r}
+
+ml_fpgrowth = function(x, features_col = "items", support = 0.01, confidence = 0.01)
+{
+  sc = spark_connection(x)
+  uid = sparklyr:::random_string("fpgrowth_")
+  jobj = invoke_new(sc, "org.apache.spark.ml.fpm.FPGrowth", uid) 
+  
+  jobj %>% 
+    invoke("setItemsCol", features_col ) %>%
+    invoke("setMinConfidence", confidence) %>%
+    invoke("setMinSupport", support)  %>%
+    invoke("fit", spark_dataframe(x))
+}
+
+fp_growth_model <- ml_fpgrowth(data)
+```
+
+```{r}
+
+ml_fpgrowth_extract_rules = function(FPGmodel, nLHS = 2, nRHS = 1)
+{
+  rules <- FPGmodel %>% invoke("associationRules")
+  sdf_register(rules, "rules")
+  
+  exprs1 <- lapply(
+    0:(nLHS - 1), 
+    function(i) paste("CAST(antecedent[", i, "] AS string) AS LHSitem", i, sep="")
+  )
+  exprs2 <- lapply(
+    0:(nRHS - 1), 
+    function(i) paste("CAST(consequent[", i, "] AS string) AS RHSitem", i, sep="")
+  )
+  
+  splittedLHS <- rules %>% invoke("selectExpr", exprs1) 
+  splittedRHS <- rules %>% invoke("selectExpr", exprs2) 
+  p1 <- sdf_register(splittedLHS, "tmp1")
+  p2 <- sdf_register(splittedRHS, "tmp2")
+  
+  bind_cols(
+    sdf_bind_cols(p1, p2) %>% collect(),
+    rules %>% collect() %>% select(confidence)
+  )
+}
+
+rules <- ml_fpgrowth_extract_rules(fp_growth_model)
+
+rules
+```
+
+```{r}
+
+library(visNetwork)
+
+plot_rules = function(rules, LHS = "LHSitem0", RHS = "RHSitem0", cf = 0.5)
+{
+  rules <- rules %>% filter(confidence > cf)
+  nds <- unique(
+    c(
+      rules[, LHS][[1]],
+      rules[, RHS][[1]]
+    )
+  )
+  
+  nodes <- data.frame(id = nds, label = nds, title = nds) %>% arrange(id)
+  
+  edges <- data.frame(
+    from =  rules[, LHS][[1]],
+    to = rules[, RHS][[1]]
+  )
+  visNetwork(nodes, edges, main = "FP-growth rules plot", size=1) %>%
+    visOptions(highlightNearest = TRUE, nodesIdSelection = TRUE) %>%
+    visEdges(arrows = 'from') %>%
+    visPhysics(
+      solver = "barnesHut", 
+      forceAtlas2Based = list(gravitationalConstant = -20, maxVelocity = 1)
+    )
+}
+
+plot_rules(rules)
+```
+
+```{r}
+
+fp_growth_model <- ml_fpgrowth(data, confidence = 0.7)
+
+rules <- ml_fpgrowth_extract_rules(fp_growth_model)
+
+rules
+```
+
+```{r}
+
+plot_rules(rules)
+```

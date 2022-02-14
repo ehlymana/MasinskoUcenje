@@ -1,0 +1,142 @@
+---
+title: "Laboratorijska Vježba 2. (Statističke metode za istraživanje podataka)"
+output:
+  html_document:
+    df_print: paged
+---
+
+## Zadatak 1
+
+```{r}
+
+podaci <- read.csv("podaci.csv", fileEncoding = 'UTF-8')
+
+ocjene <- c(8, 8, 8, 10, 6, 8)
+
+ocjene_factor1 <- factor(ocjene)
+ocjene_factor2 <- factor(ocjene, levels = c(5, 6, 7, 8, 9, 10))
+
+cat("Broj nivoa faktor varijable 1: ", nlevels(ocjene_factor1), "\n")
+cat("Nivoi faktor varijable 1: ", levels(ocjene_factor1), "\n")
+cat("Broj nivoa faktor varijable 2: ", nlevels(ocjene_factor2), "\n")
+cat("Nivoi faktor varijable 2: ", levels(ocjene_factor2), "\n")
+
+```
+
+```{r}
+
+ocjene_ordered <- factor(ocjene, order = TRUE, levels = c(5, 6, 7, 8, 9, 10))
+ocjene_unordered <- factor(ocjene, order = FALSE, levels = c(5, 6, 7, 8, 9, 10))
+
+cat("Da li je 6 veće od 10 u ordered varijabli? Rezultat: ", (ocjene_ordered[5] > ocjene_ordered[4]) == TRUE, "\n")
+cat("Da li je 6 veće od 10 u unordered varijabli? Rezultat: ", (ocjene_unordered[5] > ocjene_unordered[4]) == TRUE, "\n")
+```
+
+------------------------------------------------------------------------
+
+## Zadatak 2
+
+```{r}
+
+cat("Prikaz cijele kolone spol: ", podaci$spol, "\n")
+cat("Prikaz elementa u redu 2 i koloni 3: ", podaci[2, 3], "\n")
+cat("Prikaz svih elemenata u redovima 4 i 5: ")
+podaci[4:5, ]
+cat("Prikaz svih osoba viših od 190 cm: ")
+subset(podaci, visina > 190)
+```
+
+------------------------------------------------------------------------
+
+## Zadatak 3
+
+### Procjena lokacije
+
+```{r}
+
+trimmed_mean <- function(vektor)
+{
+  vektor <- sort(vektor)
+  p <- 1
+  trimmed_vektor <- vektor[1 + p : length(vektor) - p]
+  return (sum(trimmed_vektor) / length(trimmed_vektor))
+}
+
+cat("Prikaz svih informacija o varijabli visina: ", summary(podaci$visina), "\n")
+
+cat("Mean vrijednost: ", mean(podaci$visina), "\n")
+cat("Trimmed mean vrijednost za p = 1: ", trimmed_mean(podaci$visina), "\n")
+cat("Median vrijednost: ", median(podaci$visina), "\n")
+cat("Opseg vrijednosti: ", range(podaci$visina), "\n")
+cat("IQR vrijednost: ", IQR(podaci$visina))
+```
+
+```{r}
+
+boxplot(podaci$visina)
+```
+
+### Procjena varijabilnosti
+
+```{r}
+
+cat("Srednja apsolutna devijacija za varijablu godište: ", mad(podaci$godiste), "\n")
+cat("Varijansa: ", var(podaci$godiste), "\n")
+cat("Standardna devijacija: ", sd(podaci$godiste))
+```
+
+```{r}
+
+hist(podaci$godiste, prob = TRUE, main = "Grafik gustoće za godiste")
+dx <- density(podaci$godiste)
+lines(dx, lwd = 2, col = "red")
+```
+
+------------------------------------------------------------------------
+
+## Zadatak 4
+
+### Pearsonov koeficijent korelacije
+
+```{r}
+
+cor <- cor.test(podaci$godiste, podaci$visina, method = "pearson")
+cat("Pearsonov koeficijent korelacije godište-visina: ", cor$estimate)
+```
+
+```{r}
+
+plot(podaci$visina, podaci$godiste, main = "Korelacija visine i godišta", xlab = "Visina", ylab = "Godište", pch = 19, frame = FALSE)
+abline(lm(podaci$godiste ~ podaci$visina, data = podaci), lwd = 2, col = "blue")
+```
+
+### Chi-Square test
+
+```{r}
+
+godista <- sort(unique(podaci$godiste))
+boje_ociju <- unique(podaci$boja_ociju)
+data <- matrix(0, length(godista), length(boje_ociju))
+rownames(data) <- godista
+colnames(data) <- boje_ociju
+
+for (i in 1 : length(godista))
+{
+  for (j in 1 : length(boje_ociju))
+  {
+    redovi <- subset(podaci, (godiste == godista[i] & boja_ociju == boje_ociju[j]))
+    data[i, j] = length(redovi$godiste)
+  }
+}
+
+data
+```
+
+```{r}
+
+chi <- chisq.test(data)
+
+cat("Chi-square test varijabli godište i boja očiju: ", chi$statistic, "\n")
+critical <- qchisq(p = chi$p.value, df = chi$parameter)
+cat("Kritična vrijednost: ", critical)
+```

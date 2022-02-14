@@ -1,0 +1,174 @@
+---
+title: "Laboratorijska Vježba 10. (Prototip-bazirane metode clusteringa)"
+output:
+  html_document:
+    df_print: paged
+---
+
+## Zadatak 1 (PCA)
+
+```{r}
+
+library(stats)
+
+podaci <- read.csv("video_games_sales.csv", fileEncoding = 'UTF-8')
+
+podaci$Name <- as.numeric(factor(podaci$Name))
+podaci$Platform <- as.numeric(factor(podaci$Platform))
+podaci$Year_of_Release <- as.numeric(factor(podaci$Year_of_Release))
+podaci$Genre <- as.numeric(factor(podaci$Genre))
+podaci$Publisher <- as.numeric(factor(podaci$Publisher))
+podaci$User_Score <- as.numeric(factor(podaci$User_Score))
+podaci$Developer <- as.numeric(factor(podaci$Developer))
+podaci$Rating <- as.numeric(factor(podaci$Rating))
+
+pca <- prcomp(subset(podaci, select = -c(Rating)), scale. = TRUE)
+```
+
+```{r}
+
+library(factoextra)
+
+fviz_eig(pca)
+
+summary(pca)
+```
+
+```{r}
+
+fviz_pca_var(pca,
+             col.var = "contrib",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE
+             )
+```
+
+```{r}
+
+newdata <- predict(pca, podaci)
+newdata <- newdata[, 1:8]
+newdata <- data.frame(newdata)
+```
+
+## Zadatak 2 (k-means i k-medoids sa i bez PCA)
+
+```{r}
+
+library(cluster)
+
+model <- kmeans(podaci, centers = 2)
+
+plot(podaci[c("Global_Sales", "Critic_Score")], col = model$cluster)
+plot(podaci[c("Genre", "User_Count")], col = model$cluster)
+
+fviz_cluster(model, data = podaci)
+
+model <- kmeans(newdata, centers = 2)
+
+plot(newdata[c("PC1", "PC2")], col = model$cluster)
+plot(newdata[c("PC2", "PC4")], col = model$cluster)
+
+fviz_cluster(model, data = newdata)
+
+model <- pam(newdata, k = 2)
+
+plot(newdata[c("PC1", "PC2")], col = model$cluster)
+plot(newdata[c("PC2", "PC4")], col = model$cluster)
+
+fviz_cluster(model, data = newdata)
+```
+
+```{r}
+
+fviz_nbclust(podaci, kmeans, method = "wss")
+fviz_nbclust(newdata, kmeans, method = "wss")
+fviz_nbclust(newdata, pam, method = "wss")
+```
+
+```{r}
+
+fviz_nbclust(podaci, kmeans, method = "silhouette")
+fviz_nbclust(newdata, kmeans, method = "silhouette")
+fviz_nbclust(newdata, pam, method = "silhouette")
+```
+
+```{r}
+
+fviz_nbclust(podaci, kmeans, method = "gap_stat", nboot = 2)
+fviz_nbclust(newdata, kmeans, method = "gap_stat", nboot = 2)
+fviz_nbclust(newdata, pam, method = "gap_stat", nboot = 2)
+```
+
+## Zadatak 3 (Validacija clusteringa)
+
+```{r}
+
+library(clustertend)
+
+hopkins1 <- hopkins(podaci, n = 10)
+hopkins2 <- hopkins(newdata, n = 10)
+
+cat("Hopkins statistika za originalne podatke:", hopkins1$H, "\n")
+cat("Hopkins statistika za PCA podatke:", hopkins2$H)
+```
+
+```{r}
+
+distance <- get_dist(podaci, method = "manhattan")
+fviz_dist(distance, gradient = list(low = "blue", mid = "white", high = "red"))
+distance <- get_dist(podaci, method = "euclidean")
+fviz_dist(distance, gradient = list(low = "blue", mid = "white", high = "red"))
+distance <- get_dist(podaci, method = "minkowski")
+fviz_dist(distance, gradient = list(low = "blue", mid = "white", high = "red"))
+distance <- get_dist(podaci, method = "pearson")
+fviz_dist(distance, gradient = list(low = "blue", mid = "white", high = "red"))
+
+distance <- get_dist(newdata, method = "manhattan")
+fviz_dist(distance, gradient = list(low = "blue", mid = "white", high = "red"))
+distance <- get_dist(newdata, method = "euclidean")
+fviz_dist(distance, gradient = list(low = "blue", mid = "white", high = "red"))
+distance <- get_dist(newdata, method = "minkowski")
+fviz_dist(distance, gradient = list(low = "blue", mid = "white", high = "red"))
+distance <- get_dist(newdata, method = "pearson")
+fviz_dist(distance, gradient = list(low = "blue", mid = "white", high = "red"))
+```
+
+```{r}
+
+library(amap)
+
+model <- Kmeans(newdata, centers = 2, method = "pearson")
+
+fviz_cluster(model, data = newdata)
+fviz_nbclust(newdata, Kmeans, method = "silhouette")
+```
+
+```{r}
+
+model <- Kmeans(newdata, centers = 2, method = "pearson")
+sil <- silhouette(model$cluster, get_dist(newdata, method = "pearson"))
+cat("Srednja vrijednost silhouette metrike za kmeans:", mean(sil[, 3]), "\n")
+plot(sil, border = NA)
+
+model <- pam(newdata, 2,  metric = "manhattan")
+sil <- silhouette(model$cluster, get_dist(newdata, method = "manhattan"))
+cat("Srednja vrijednost silhouette metrike za PAM (manhattan metrika):", mean(sil[, 3]), "\n")
+fviz_silhouette(model)
+
+model <- pam(newdata, 2,  metric = "euclidean")
+sil <- silhouette(model$cluster, get_dist(newdata, method = "euclidean"))
+cat("Srednja vrijednost silhouette metrike za PAM (euclidean metrika):", mean(sil[, 3]))
+fviz_silhouette(model)
+```
+
+```{r}
+
+library(funtimes)
+
+classes <- podaci$Rating
+classes[classes < 4] <- 1
+classes[classes > 3] <- 2
+purity <- purity(model$cluster, classes)
+
+cat("Čistoća clusteringa:", purity$pur)
+```

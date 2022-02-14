@@ -1,0 +1,187 @@
+---
+title: "Laboratorijska Vježba 8. (Upotreba neuralnih mreža za binarnu klasifikaciju)"
+output:
+  html_document:
+    df_print: paged
+---
+
+## Zadatak 1 - Definicija neuralnih mreža
+
+```{r}
+
+library(caret)
+
+podaci <- read.csv("credit.csv")
+
+podaci$purpose <- as.numeric(factor(podaci$purpose))
+podaci$credit_history <- as.numeric(factor(podaci$credit_history))
+podaci$other_debtors <- as.numeric(factor(podaci$other_debtors))
+podaci$property <- as.numeric(factor(podaci$property))
+podaci$job <- as.numeric(factor(podaci$job))
+
+podaci$allow[podaci$allow == "1"] <- 0
+podaci$allow[podaci$allow == "2"] <- 1
+
+preObj <- preProcess(subset(podaci, select = -c(allow)), method=c("range"), rangebounds = c(0, 1))
+class <- podaci$allow
+podaci <- predict(preObj, subset(podaci, select = -c(allow)))
+podaci$allow <- class
+
+rows <- sample(nrow(podaci))
+podaci <- podaci[rows, ]
+
+end <- length(podaci$allow)
+n <- as.integer(0.8 * end)
+podaci_train <- podaci[1 : n, ]
+podaci_test <- podaci[(n + 1) : end, ]
+```
+
+```{r}
+
+library(neuralnet)
+
+model_one <- neuralnet(formula = allow ~ .,
+                   data = podaci_train,
+                   linear.output = FALSE, 
+                   err.fct = "ce",
+                   hidden = 1,
+                   lifesign = "full")
+
+plot(model_one)
+```
+
+```{r}
+
+model_multiple <- neuralnet(formula = allow ~ .,
+                   data = podaci_train,
+                   linear.output = FALSE, 
+                   err.fct = "ce",
+                   hidden = 4,
+                   lifesign = "full")
+
+plot(model_multiple)
+```
+
+```{r}
+
+model_one_rep <- neuralnet(formula = allow ~ .,
+                   data = podaci_train,
+                   linear.output = FALSE, 
+                   err.fct = "ce",
+                   hidden = 1,
+                   rep = 5,
+                   lifesign = "minimal")
+
+plot(model_one_rep, rep = "best")
+```
+
+```{r}
+
+model_multiple_rep <- neuralnet(formula = allow ~ .,
+                   data = podaci_train,
+                   linear.output = FALSE, 
+                   err.fct = "ce",
+                   hidden = 4,
+                   rep = 5,
+                   lifesign = "minimal")
+
+plot(model_multiple_rep, rep = "best")
+```
+
+```{r}
+
+model_multiple_layers <- neuralnet(formula = allow ~ .,
+                   data = podaci_train,
+                   linear.output = FALSE, 
+                   err.fct = "ce",
+                   hidden = c(2, 1),
+                   lifesign = "minimal")
+
+plot(model_multiple_layers)
+```
+
+## Zadatak 2 - Evaluacija tačnosti
+
+```{r}
+
+plot_error <- function(model)
+{
+  results <- model$result.matrix
+  errors <- results[1, ]
+  epochs <- 1 : length(results[1, ])
+  plot(epochs, errors, type = "l")
+}
+
+plot_error(model_one_rep)
+plot_error(model_multiple_rep)
+
+cat("Error for 1 neuron in 1 layer:", model_one$result.matrix[1, 1], "\n")
+cat("Minimum error for 1 neuron in 1 layer after 5 epochs:", min(model_one_rep$result.matrix[1, ]), "\n")
+cat("Error for 4 neurons in 1 layer:", model_multiple$result.matrix[1, 1], "\n")
+cat("Minimum error for 4 neurons in 1 layer after 5 epochs:", min(model_multiple_rep$result.matrix[1, ]), "\n")
+cat("Error for 2 neurons in 1st and 1 neuron in 2nd layer:", model_multiple_layers$result.matrix[1, 1])
+```
+
+```{r}
+
+library(caret)
+
+train_accuracy <- function(model)
+{
+  result <- model$net.result
+  predictions <- result[[length(result)]]
+  
+  predictions[predictions > 0.5] <- 1
+  predictions[predictions <= 0.5] <- 0
+  predictions <- factor(predictions)
+
+  cm <- confusionMatrix(data = predictions, reference = factor(podaci_train$allow))
+  cat("Train accuracy:", cm$overall[1], "\n")
+}
+
+test_accuracy <- function(model)
+{
+  predictions <- compute(model, subset(podaci_test, select = -c(allow)))
+  predictions <- predictions$net.result
+  
+  predictions[predictions > 0.5] <- 1
+  predictions[predictions <= 0.5] <- 0
+  predictions <- factor(predictions)
+
+  cm <- confusionMatrix(data = predictions, reference = factor(podaci_test$allow))
+  cat("Test accuracy:", cm$overall[1], "\n")
+}
+
+train_accuracy(model_one)
+train_accuracy(model_one_rep)
+train_accuracy(model_multiple)
+train_accuracy(model_multiple_rep)
+train_accuracy(model_multiple_layers)
+
+cat("\n")
+
+test_accuracy(model_one)
+test_accuracy(model_one_rep)
+test_accuracy(model_multiple)
+test_accuracy(model_multiple_rep)
+test_accuracy(model_multiple_layers)
+```
+
+## Zadatak 3 - Tuning hiperparametara
+
+```{r}
+
+library(e1071)
+library(nnet)
+
+tuning <- tune.nnet(formula = allow ~ .,
+                   x = subset(podaci, select = -c(allow)),
+                   y = podaci$allow,
+                   size = c(1, 2, 5, 10), decay = c(1e-07, 1e-05, 1e-03, 1e-01))
+
+cat("Najbolja vrijednost size:", tuning$best.parameters$size, "\n")
+cat("Najbolja vrijednost decay:", tuning$best.parameters$decay, "\n")
+cat("Najveća tačnost:", 1.00 - tuning$best.performance)
+
+plot(tuning)
+```

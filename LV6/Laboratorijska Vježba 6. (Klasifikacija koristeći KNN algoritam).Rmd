@@ -1,0 +1,247 @@
+---
+title: "Laboratorijska Vježba 6. (Klasifikacija koristeći KNN algoritam)"
+output:
+  html_document:
+    df_print: paged
+---
+
+## Zadatak 1
+
+```{r}
+
+podaci <- read.csv("diamonds.csv")
+
+podaci$cut <- factor(podaci$cut)
+
+rows <- sample(nrow(podaci))
+podaci <- podaci[rows, ]
+
+end <- length(podaci$cut)
+n <- as.integer(0.8 * end)
+podaci_train <- podaci[1 : n, ]
+podaci_test <- podaci[(n + 1) : end, ]
+```
+
+```{r}
+
+library(class)
+library(caret)
+
+predictions <- knn(train = subset(podaci_train, select = -c(cut)),
+                   test = subset(podaci_test, select = -c(cut)),
+                   cl = podaci_train$cut, k = 15)
+
+cm <- confusionMatrix(data = predictions, reference = podaci_test$cut)
+cm
+```
+
+```{r}
+
+library(tidyverse)
+library(plyr)
+
+# prikaz plota za trening instance
+
+plot.df = data.frame(podaci_train, predicted = podaci_train$cut)
+
+plot.df1 = data.frame(x = plot.df$carat, 
+                      y = plot.df$price, 
+                      predicted = plot.df$predicted)
+
+ggplot(plot.df, aes(carat, price, color = predicted, fill = predicted)) + 
+  geom_point(size = 1.5)
+
+# prikaz plota za testne instance
+
+plot.df = data.frame(podaci_test, predicted = predictions)
+
+plot.df1 = data.frame(x = plot.df$carat, 
+                      y = plot.df$price, 
+                      predicted = plot.df$predicted)
+
+ggplot(plot.df, aes(carat, price, color = predicted, fill = predicted)) + 
+  geom_point(size = 1.5)
+```
+
+```{r}
+
+library(tune)
+library(e1071)
+
+tuning <- tune.knn(formula = cut ~ .,
+                   x = subset(podaci, select = -c(cut)),
+                   y = podaci$cut,
+                   k = c(3, 5, 7, 9, 11, 13, 15, 17, 19, 21))
+
+cat("Najbolja vrijednost k:", tuning$best.parameters$k, "\n")
+cat("Najveća tačnost:", 1.00 - tuning$best.performance)
+
+plot(tuning)
+```
+
+```{r}
+
+summary(podaci)
+```
+
+```{r}
+
+library(dplyr)
+
+podaci <- read.csv("diamonds.csv")
+
+podaci$cut <- factor(podaci$cut)
+
+max <- max(podaci$price)
+j <- 0
+while (10 ** j < max)
+  j = j + 1
+
+podaci <- mutate(podaci, price_new = price / 10 ** j)
+
+max <- max(podaci$depth)
+j <- 0
+while (10 ** j < max)
+  j = j + 1
+
+podaci <- mutate(podaci, depth_dec = depth / 10 ** j)
+
+max <- max(podaci$table)
+j <- 0
+while (10 ** j < max)
+  j = j + 1
+
+podaci <- mutate(podaci, table_dec = table / 10 ** j)
+
+podaci <- subset(podaci, select = -c(price, depth, table))
+
+rows <- sample(nrow(podaci))
+podaci <- podaci[rows, ]
+
+end <- length(podaci$cut)
+n <- as.integer(0.8 * end)
+podaci_train <- podaci[1 : n, ]
+podaci_test <- podaci[(n + 1) : end, ]
+
+tuning <- tune.knn(formula = cut ~ .,
+                   x = subset(podaci, select = -c(cut)),
+                   y = podaci$cut,
+                   k = c(3, 5, 7, 9, 11, 13, 15, 17, 19, 21))
+
+cat("Najbolja vrijednost k:", tuning$best.parameters$k, "\n")
+cat("Najveća tačnost:", 1.00 - tuning$best.performance)
+
+plot(tuning)
+```
+
+```{r}
+
+library(kknn)
+
+kknn_manhattan <- kknn(formula = cut ~ ., train = podaci_train, test = podaci_test, k = 3, distance = 1)
+kknn_euclidean <- kknn(formula = cut ~ ., train = podaci_train, test = podaci_test, k = 3, distance = 2)
+kknn_minkowski_3 <- kknn(formula = cut ~ ., train = podaci_train, test = podaci_test, k = 3, distance = 3)
+
+cm <- confusionMatrix(data = kknn_manhattan$fitted.values, reference = podaci_test$cut)
+cat("Tačnost pri korištenju manhattan distance:", cm$overall[1], "\n")
+cm <- confusionMatrix(data = kknn_euclidean$fitted.values, reference = podaci_test$cut)
+cat("Tačnost pri korištenju euklidske distance:", cm$overall[1], "\n")
+cm <- confusionMatrix(data = kknn_minkowski_3$fitted.values, reference = podaci_test$cut)
+cat("Tačnost pri korištenju minkowski-3 distance:", cm$overall[1], "\n")
+```
+
+```{r}
+
+plot.df = data.frame(podaci_test, predicted = kknn_minkowski_3$fitted.values)
+
+plot.df1 = data.frame(x = plot.df$carat, 
+                      y = plot.df$price_new, 
+                      predicted = plot.df$predicted)
+
+ggplot(plot.df, aes(carat, price_new, color = predicted, fill = predicted)) + 
+  geom_point(size = 1.5)
+```
+
+## Zadatak 2 - SMOTE
+
+```{r}
+
+podaci <- read.csv("diamonds.csv")
+podaci$cut <- factor(podaci$cut)
+
+podaci_klasa1 <- subset(podaci, cut == "Suitable")
+podaci_klasa2 <- subset(podaci, cut == "Not Suitable")
+
+rows <- sample(1000)
+podaci_klasa1 <- podaci_klasa1[rows, ]
+podaci <- rbind(podaci_klasa1, podaci_klasa2)
+```
+
+```{r}
+
+tuning <- tune.knn(formula = cut ~ .,
+                   x = subset(podaci, select = -c(cut)),
+                   y = podaci$cut,
+                   k = c(3, 5, 7, 9, 11, 13, 15, 17, 19, 21))
+
+cat("Najbolja vrijednost k:", tuning$best.parameters$k, "\n")
+cat("Najveća tačnost:", 1.00 - tuning$best.performance)
+
+plot(tuning)
+```
+
+```{r}
+
+library(smotefamily)
+options(warn = -1)
+
+new_data <- SMOTE(X = subset(podaci, select = -c(cut)), target = podaci$cut, K = 7, dup_size = 0)$data
+
+new_data$cut <- factor(new_data$class)
+new_data <- subset(new_data, select = -c(class))
+
+hist(as.numeric(podaci$cut), ylim = c(0, 2100), labels = c("Not Suitable", "Suitable"), breaks = 2)
+hist(as.numeric(new_data$cut), ylim = c(0, 2100), labels = c("Not Suitable", "Suitable"), breaks = 2)
+```
+
+```{r}
+
+max <- max(new_data$price)
+j <- 0
+while (10 ** j < max)
+  j = j + 1
+
+new_data <- mutate(new_data, price_new = price / 10 ** j)
+
+max <- max(new_data$depth)
+j <- 0
+while (10 ** j < max)
+  j = j + 1
+
+new_data <- mutate(new_data, depth_dec = depth / 10 ** j)
+
+max <- max(new_data$table)
+j <- 0
+while (10 ** j < max)
+  j = j + 1
+
+new_data <- mutate(new_data, table_dec = table / 10 ** j)
+
+new_data <- subset(new_data, select = -c(price, depth, table))
+
+rows <- sample(nrow(podaci))
+new_data <- new_data[rows, ]
+
+end <- length(new_data$cut)
+n <- as.integer(0.8 * end)
+podaci_train <- new_data[1 : n, ]
+podaci_test <- new_data[(n + 1) : end, ]
+```
+
+```{r}
+
+kknn_minkowski_3 <- kknn(formula = cut ~ ., train = podaci_train, test = podaci_test, k = 3, distance = 3)
+
+cm <- confusionMatrix(data = kknn_minkowski_3$fitted.values, reference = podaci_test$cut)
+cat("Tačnost pri korištenju minkowski-3 distance:", cm$overall[1], "\n")
+```
